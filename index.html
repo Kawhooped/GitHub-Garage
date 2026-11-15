@@ -177,7 +177,7 @@ async function previewFile(path,url){
  try{
   const file=await gh(api+'/repos/'+owner+'/'+currentRepo.name+'/contents/'+path.split('/').map(encodeURIComponent).join('/')+'?ref='+encodeURIComponent(currentRepo.default_branch));
   if(file.type!=='file'||!file.content)throw new Error('This item cannot be previewed as a text file.');
-  const decoded=decodeURIComponent(escape(atob(file.content.replace(/\s/g,''))));
+  const bytes=Uint8Array.from(atob(file.content.replace(/\s/g,'')),c=>c.charCodeAt(0));const decoded=new TextDecoder('utf-8').decode(bytes);
   const ext=path.split('.').pop().toLowerCase();
   if(/^(png|jpg|jpeg|gif|webp|ico|pdf|zip|woff2?|ttf|mp4|mp3)$/i.test(ext)){$('#previewContent').innerHTML='<p class="hint">This looks like a binary asset. Open it on GitHub to inspect or download it.</p>';return}
   const pre=document.createElement('pre');pre.textContent=decoded;$('#previewContent').replaceChildren(pre);
