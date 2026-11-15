@@ -1,11 +1,31 @@
 # Little Image Studio
 
-A small image-making workbench in GitHub Garage.
+A lightweight, mobile-friendly image workbench served directly from GitHub Pages.
 
-- [Open the live studio](https://dim-secret-afkgaming.replit.app)
-- [Open the Garage preview](./)
+## Included now
+- Prompt editor and selectable visual moods
+- Random prompt and surprise-style controls
+- Image import from your device
+- Square preview canvas
+- PNG export normalized to exactly 1026 × 1026 pixels
+- Browser-local gallery (up to 24 images)
+- Configurable generation endpoint; defaults to `/api/generate`
 
-The Garage page embeds the live application so it can be opened directly from the workshop. The running app is currently deployed on Replit; its complete source project has not yet been migrated into this folder.
+## Image generation connection
 
-The studio is designed for square PNG exports at exactly 1026 × 1026 pixels, with a prompt field, compact creative controls, and a saved-image gallery.
+The interface expects a secure server endpoint accepting:
 
+```http
+POST /api/generate
+Content-Type: application/json
+
+{"prompt":"...","size":"1026x1026"}
+```
+
+The endpoint should return JSON containing one of `image`, `image_url`, `url`, or `b64_json`. Keep provider API keys on the server. Never put secret keys in this static page.
+
+Until a generation endpoint is connected, image import, preview, gallery, and PNG export work independently. The gallery is stored in this browser's local storage and does not sync between devices.
+
+## Open
+
+Visit the GitHub Pages Garage site and choose Little Image Studio, or open the project folder's `index.html` through a static web host.
