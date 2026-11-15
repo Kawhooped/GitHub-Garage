@@ -4,31 +4,28 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#151713">
-<meta name="description" content="An interactive workshop map for the Kawhooped GitHub project collection. Explore repositories, tools, experiments, and things we are building.">
+<meta name="description" content="Explore the Kawhooped GitHub workshop: repositories, folders, files, and experiments.">
 <meta property="og:title" content="GitHub Garage · Kawhooped Workshop">
 <meta property="og:description" content="Many projects. One big garage. Explore the workshop.">
-<meta property="og:type" content="website">
-<title>GitHub Garage · Kawhooped Workshop</title>
+<title>GitHub Garage · Repository Explorer</title>
 <style>
-:root{--bg:#151713;--panel:#20231d;--panel2:#292d25;--line:#3a4035;--ink:#f1f0df;--muted:#a6ad98;--lime:#c7f36b;--orange:#ffad69;--blue:#8bc8ff;--pink:#f2a6ce}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 70% -10%,#35402c 0,transparent 45%),var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
-a{color:inherit}.shell{max-width:1400px;margin:auto;padding:26px clamp(16px,4vw,54px) 70px}
-.top{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--line);padding-bottom:18px}.brand{display:flex;gap:12px;align-items:center}.mark{width:42px;height:42px;border-radius:12px;background:var(--lime);color:#1b2113;display:grid;place-items:center;font-size:23px;font-weight:900}.eyebrow{color:var(--lime);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:800}.brand h1{font-size:20px;margin:0;letter-spacing:-.03em}.topnote{color:var(--muted);font-size:12px}
-.hero{padding:54px 0 32px;display:grid;grid-template-columns:1.4fr .6fr;gap:30px;align-items:end}.hero h2{font-size:clamp(36px,6vw,72px);line-height:.98;letter-spacing:-.065em;margin:12px 0 18px;max-width:780px}.hero h2 span{color:var(--lime)}.hero p{max-width:650px;color:var(--muted);font-size:16px;margin:0}.statusbox{border:1px solid var(--line);background:#1b1f19d9;border-radius:16px;padding:18px}.statusline{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:12px}.bigstat{font-size:36px;font-weight:800;letter-spacing:-.05em;margin:6px 0}.live{color:var(--lime);font-size:12px}.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:22px 0 18px}.search{flex:1;min-width:220px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--ink);font:inherit;outline:none}.search:focus{border-color:var(--lime)}.filter{border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:999px;padding:9px 13px;font:inherit;font-size:12px;cursor:pointer}.filter.active{background:var(--lime);border-color:var(--lime);color:#1a2112;font-weight:800}.sectionhead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:28px 0 14px}.sectionhead h3{font-size:17px;margin:0}.sectionhead span{color:var(--muted);font-size:12px}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.card{background:linear-gradient(145deg,#252a22,#1d211b);border:1px solid var(--line);border-radius:14px;padding:16px;min-height:164px;display:flex;flex-direction:column;transition:.18s transform,.18s border-color}.card:hover{transform:translateY(-3px);border-color:#82945d}.cardtop{display:flex;justify-content:space-between;align-items:center;gap:8px}.tag{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--lime);font-weight:800}.repoicon{font-size:20px}.card h4{margin:10px 0 5px;font-size:16px;letter-spacing:-.02em}.card p{margin:0;color:var(--muted);font-size:12px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.cardfoot{margin-top:auto;padding-top:15px;display:flex;justify-content:space-between;gap:8px;color:#87907d;font-size:10px}.card a{text-decoration:none}.card a:hover h4{color:var(--lime)}.empty,.error{padding:30px;border:1px dashed var(--line);border-radius:14px;color:var(--muted);grid-column:1/-1}.footer{border-top:1px solid var(--line);margin-top:48px;padding-top:18px;color:#838c79;font-size:11px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.footer strong{color:var(--ink)}.loading{color:var(--muted);padding:28px 0}
-@media(max-width:850px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.grid{grid-template-columns:1fr}.hero{padding-top:38px}.topnote{display:none}}
+:root{--bg:#151713;--panel:#20231d;--panel2:#292d25;--line:#3a4035;--ink:#f1f0df;--muted:#a6ad98;--lime:#c7f36b;--orange:#ffad69;--blue:#8bc8ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 70% -10%,#35402c 0,transparent 45%),var(--bg);color:var(--ink);font:14px/1.5 ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}button,input{font:inherit}a{color:inherit}.shell{max-width:1500px;margin:auto;padding:22px clamp(14px,3vw,42px) 60px}.top{display:flex;justify-content:space-between;align-items:center;gap:14px;border-bottom:1px solid var(--line);padding-bottom:16px}.brand{display:flex;gap:11px;align-items:center}.mark{width:40px;height:40px;border-radius:12px;background:var(--lime);color:#1b2113;display:grid;place-items:center;font-size:22px;font-weight:900}.eyebrow{color:var(--lime);font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:800}.brand h1{font-size:19px;margin:0}.topnote{color:var(--muted);font-size:12px}.hero{padding:36px 0 24px;display:grid;grid-template-columns:1.5fr .5fr;gap:20px;align-items:end}.hero h2{font-size:clamp(34px,5vw,62px);line-height:.98;letter-spacing:-.06em;margin:10px 0 12px}.hero h2 span{color:var(--lime)}.hero p{max-width:650px;color:var(--muted);margin:0}.stats{border:1px solid var(--line);background:#1b1f19d9;border-radius:14px;padding:15px}.statrow{display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.bigstat{font-size:32px;font-weight:850;letter-spacing:-.05em;margin:4px 0}.toolbar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:16px 0}.search{flex:1;min-width:190px;background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:11px 13px;color:var(--ink);outline:none}.search:focus{border-color:var(--lime)}.filters{display:flex;gap:6px;flex-wrap:wrap}.filter,.btn{border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:999px;padding:8px 11px;font-size:11px;cursor:pointer}.filter.active,.btn.primary{background:var(--lime);border-color:var(--lime);color:#1a2112;font-weight:800}.sectionhead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:22px 0 12px}.sectionhead h3{font-size:16px;margin:0}.sectionhead span{color:var(--muted);font-size:11px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.card{background:linear-gradient(145deg,#252a22,#1d211b);border:1px solid var(--line);border-radius:13px;padding:14px;min-height:150px;display:flex;flex-direction:column;cursor:pointer;transition:.16s}.card:hover{transform:translateY(-2px);border-color:#82945d}.cardtop{display:flex;justify-content:space-between}.tag{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--lime);font-weight:800}.card h4{margin:9px 0 4px;font-size:15px}.card p{margin:0;color:var(--muted);font-size:11px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.cardfoot{margin-top:auto;padding-top:12px;display:flex;justify-content:space-between;color:#87907d;font-size:10px}.empty,.error,.loading{padding:25px;border:1px dashed var(--line);border-radius:12px;color:var(--muted);grid-column:1/-1}
+.overlay{position:fixed;inset:0;background:#090b08d9;z-index:5;display:none;padding:clamp(0px,3vw,28px);align-items:stretch;justify-content:center}.overlay.open{display:flex}.explorer{width:min(1180px,100%);background:#191d17;border:1px solid #46503c;border-radius:16px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 25px 90px #0009}.explorehead{padding:15px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}.repo-title{font-weight:800;font-size:16px}.repo-sub{color:var(--muted);font-size:11px}.close{background:transparent;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:7px 10px;cursor:pointer}.crumbs{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:10px 18px;border-bottom:1px solid var(--line);font-size:11px;color:var(--muted)}.crumbs button{border:0;background:none;color:var(--lime);cursor:pointer;padding:0}.explorebody{display:grid;grid-template-columns:minmax(230px,.75fr) minmax(0,1.25fr);min-height:0;flex:1}.filelist{overflow:auto;border-right:1px solid var(--line);padding:12px}.filelist h4,.preview h4{margin:2px 0 10px;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}.fileitem{width:100%;display:flex;align-items:center;gap:9px;text-align:left;background:transparent;color:var(--ink);border:0;border-radius:7px;padding:9px 8px;cursor:pointer;font-size:12px;overflow-wrap:anywhere}.fileitem:hover,.fileitem.selected{background:#30382a}.fileitem .kind{width:17px;flex:none}.preview{padding:16px;overflow:auto;min-width:0}.previewtop{display:flex;justify-content:space-between;gap:10px;align-items:center}.preview pre{white-space:pre;overflow:auto;background:#10130f;border:1px solid var(--line);padding:14px;border-radius:9px;color:#d8e4c8;font:12px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;max-height:65vh}.preview .readme{white-space:pre-wrap;overflow-wrap:anywhere;color:#d9ddcf;font-size:13px}.hint{color:var(--muted);font-size:12px}.footer{border-top:1px solid var(--line);margin-top:38px;padding-top:15px;color:#838c79;font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:850px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.explorebody{grid-template-columns:1fr;grid-template-rows:minmax(180px,35%) 1fr}.filelist{border-right:0;border-bottom:1px solid var(--line)}.preview pre{max-height:36vh}}@media(max-width:560px){.grid{grid-template-columns:1fr}.topnote{display:none}.overlay{padding:0}.explorer{border-radius:0;border:0}.explorebody{grid-template-rows:minmax(160px,34%) 1fr}}
 </style>
 </head>
 <body><main class="shell">
 <header class="top"><div class="brand"><div class="mark">⌘</div><div><div class="eyebrow">Kawhooped · shared workshop</div><h1>GitHub Garage</h1></div></div><div class="topnote">A living map of things we're making.</div></header>
-<section class="hero"><div><div class="eyebrow">Welcome to the workshop</div><h2>Many projects.<br><span>One big garage.</span></h2><p>Explore the machines, experiments, tools, games, and half-built wonders in the collection. Pick a workbench and get building.</p></div><aside class="statusbox"><div class="statusline"><span>WORKSHOP INVENTORY</span><span class="live">● LIVE DISCOVERY</span></div><div class="bigstat" id="count">—</div><div class="statusline"><span>Public repositories discovered</span><span id="updated">Connecting…</span></div></aside></section>
-<div class="sectionhead"><h3>Find a workbench</h3><span id="shown">Loading the doors…</span></div>
-<div class="toolbar"><input class="search" id="search" type="search" placeholder="Search projects, tools, experiments…" aria-label="Search repositories"><div id="filters"></div></div>
+<section class="hero"><div><div class="eyebrow">Welcome to the workshop</div><h2>Many projects.<br><span>One big garage.</span></h2><p>Discover the collection, open a repository, walk through its folders, and inspect its files. Pick a workbench and get building.</p></div><aside class="stats"><div class="statrow"><span>WORKSHOP INVENTORY</span><span id="status">● CONNECTING</span></div><div class="bigstat" id="count">—</div><div class="statrow"><span>Public repositories discovered</span><span id="updated">Loading…</span></div></aside></section>
+<div class="sectionhead"><h3>Choose a workbench</h3><span id="shown">Loading repositories…</span></div>
+<div class="toolbar"><input class="search" id="search" type="search" placeholder="Search projects, tools, experiments…" aria-label="Search repositories"><div class="filters" id="filters"></div></div>
 <div class="grid" id="grid"><div class="loading">Rolling up the garage doors…</div></div>
-<footer class="footer"><span><strong>GitHub Garage</strong> · Built to keep building.</span><span><a href="https://github.com/Kawhooped/GitHub-Garage">Source repository ↗</a> · Public repository discovery · Private projects stay private.</span></footer>
+<footer class="footer"><span><strong>GitHub Garage</strong> · Built to keep building.</span><span><a href="https://github.com/Kawhooped/GitHub-Garage">Source ↗</a> · Public repository explorer · Private projects stay private.</span></footer>
 </main>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Repository explorer"><section class="explorer"><header class="explorehead"><div><div class="repo-title" id="repoTitle">Repository</div><div class="repo-sub" id="repoSub">Browse files and folders</div></div><button class="close" id="close">Close ✕</button></header><nav class="crumbs" id="crumbs"></nav><div class="explorebody"><aside class="filelist"><h4>Files & folders</h4><div id="files"><p class="hint">Choose a repository to begin.</p></div></aside><section class="preview"><div class="previewtop"><h4 id="previewTitle">File preview</h4><a class="btn" id="githubFile" target="_blank" rel="noopener" hidden>Open on GitHub ↗</a></div><div id="previewContent" class="hint">Select a file to inspect it here.</div></section></div></section></div>
 <script>
-const owner='Kawhooped';
+const owner='Kawhooped', api='https://api.github.com';
 const groups=[
 {name:'AI & Intelligence',icon:'🧠',test:/ai|agent|neural|intelligence|collective|lattice|gemini|muse/i},
 {name:'Apps & Factories',icon:'🏭',test:/app|factory|platform|website|devtool|tool/i},
@@ -37,15 +34,17 @@ const groups=[
 {name:'Research & Experiments',icon:'🧪',test:/lab|research|plot|signal|scrap|permit|little-mind/i},
 {name:'Workshop & Infrastructure',icon:'🔧',test:/voidd|workshop|hub|shelf|gateway|portfolio/i}
 ];
-let repos=[],active='All';
+let repos=[],active='All',currentRepo=null,currentPath='';
 const $=s=>document.querySelector(s);
-function groupFor(r){const s=r.name+' '+(r.description||'');return groups.find(g=>g.test.test(s))||{name:'Other Inventions',icon:'🧰'}}
+function groupFor(r){return groups.find(g=>g.test.test((r.name||'')+' '+(r.description||'')) )||{name:'Other Inventions',icon:'🧰'}}
 function esc(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+async function gh(url){const res=await fetch(url,{headers:{Accept:'application/vnd.github+json'}});if(!res.ok)throw new Error('GitHub API returned '+res.status);return res.json()}
 function render(){
  const q=$('#search').value.toLowerCase();
- const shown=repos.filter(r=>(active==='All'||groupFor(r).name===active)&&[r.name,r.description,groupFor(r).name].join(' ').toLowerCase().includes(q));
- $('#shown').textContent=shown.length+' of '+repos.length+' workbenches';
- $('#grid').innerHTML=shown.length?shown.map(r=>{const g=groupFor(r);return '<article class="card"><div class="cardtop"><span class="tag">'+esc(g.name)+'</span><span class="repoicon">'+g.icon+'</span></div><a href="'+esc(r.html_url)+'" target="_blank" rel="noopener"><h4>'+esc(r.name)+'</h4></a><p>'+esc(r.description||'A project waiting to tell its story.')+'</p><div class="cardfoot"><span>★ '+r.stargazers_count+' · '+esc(r.language||'Various tools')+'</span><span>OPEN REPO ↗</span></div></article>'}).join(''):'<div class="empty">No workbenches match that search. Try another name or category.</div>';
+ const list=repos.filter(r=>(active==='All'||groupFor(r).name===active)&&[r.name,r.description,groupFor(r).name].join(' ').toLowerCase().includes(q));
+ $('#shown').textContent=list.length+' of '+repos.length+' workbenches';
+ $('#grid').innerHTML=list.length?list.map(r=>{const g=groupFor(r);return '<article class="card" tabindex="0" role="button" data-repo="'+esc(r.name)+'"><div class="cardtop"><span class="tag">'+esc(g.name)+'</span><span>'+g.icon+'</span></div><h4>'+esc(r.name)+'</h4><p>'+esc(r.description||'A project waiting to tell its story.')+'</p><div class="cardfoot"><span>★ '+r.stargazers_count+' · '+esc(r.language||'Various tools')+'</span><span>EXPLORE ↗</span></div></article>'}).join(''):'<div class="empty">No workbenches match that search.</div>';
+ $('#grid').querySelectorAll('[data-repo]').forEach(el=>{const open=()=>openRepo(el.dataset.repo);el.addEventListener('click',open);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})});
 }
 function filters(){
  const names=['All',...new Set(repos.map(r=>groupFor(r).name))];
@@ -54,13 +53,50 @@ function filters(){
 }
 async function load(){
  try{
-  const res=await fetch('https://api.github.com/users/'+owner+'/repos?type=public&per_page=100&sort=updated');
-  if(!res.ok)throw new Error('GitHub returned '+res.status);
-  repos=(await res.json()).filter(r=>!r.fork||r.description).sort((a,b)=>new Date(b.updated_at)-new Date(a.updated_at));
-  $('#count').textContent=repos.length;
-  $('#updated').textContent='Just now';
+  repos=(await gh(api+'/users/'+owner+'/repos?type=public&per_page=100&sort=updated')).filter(r=>!r.fork||r.description).sort((a,b)=>new Date(b.updated_at)-new Date(a.updated_at));
+  $('#count').textContent=repos.length;$('#updated').textContent='Just now';$('#status').textContent='● LIVE';
   filters();render();
- }catch(e){$('#count').textContent='—';$('#updated').textContent='Offline';$('#grid').innerHTML='<div class="error">Could not reach GitHub right now. '+esc(e.message)+'<br>Refresh the page to try again.</div>'}
+ }catch(e){$('#status').textContent='● OFFLINE';$('#count').textContent='—';$('#updated').textContent='Unavailable';$('#grid').innerHTML='<div class="error">Could not reach GitHub: '+esc(e.message)+'. Refresh to try again.</div>'}
 }
-$('#search').addEventListener('input',render);load();
+function setCrumbs(){
+ const parts=currentPath?currentPath.split('/').filter(Boolean):[];
+ $('#crumbs').innerHTML='<button data-depth="-1">'+esc(currentRepo.name)+'</button>'+parts.map((p,i)=>' <span> / </span><button data-depth="'+i+'">'+esc(p)+'</button>').join('');
+ $('#crumbs').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{const d=Number(b.dataset.depth);currentPath=d<0?'':parts.slice(0,d+1).join('/');browsePath()}));
+}
+async function openRepo(name){
+ currentRepo=repos.find(r=>r.name===name);if(!currentRepo)return;
+ currentPath='';$('#overlay').classList.add('open');document.body.style.overflow='hidden';
+ $('#repoTitle').textContent=currentRepo.full_name;$('#repoSub').textContent=(currentRepo.description||'Repository files and project documentation')+' · '+currentRepo.default_branch;
+ $('#previewTitle').textContent='File preview';$('#previewContent').innerHTML='<p class="hint">Choose a file to inspect it.</p>';
+ await browsePath();
+}
+async function browsePath(){
+ setCrumbs();$('#files').innerHTML='<p class="hint">Opening this workbench…</p>';
+ $('#previewTitle').textContent='File preview';$('#previewContent').innerHTML='<p class="hint">Select a file to inspect it here.</p>';$('#githubFile').hidden=true;
+ try{
+  const path=currentPath?'/'+currentPath:'';
+  const items=await gh(api+'/repos/'+owner+'/'+currentRepo.name+'/contents'+path+'?ref='+encodeURIComponent(currentRepo.default_branch));
+  const arr=Array.isArray(items)?items:[items];
+  arr.sort((a,b)=>(a.type==='dir'?-1:1)-(b.type==='dir'?-1:1)||a.name.localeCompare(b.name));
+  $('#files').innerHTML=arr.map(item=>'<button class="fileitem" data-type="'+esc(item.type)+'" data-path="'+esc(item.path)+'" data-url="'+esc(item.html_url||'')+'"><span class="kind">'+(item.type==='dir'?'📁':'📄')+'</span>'+esc(item.name)+'</button>').join('')||'<p class="hint">This folder is empty.</p>';
+  $('#files').querySelectorAll('[data-path]').forEach(b=>b.addEventListener('click',()=>b.dataset.type==='dir'?(currentPath=b.dataset.path,browsePath()):previewFile(b.dataset.path,b.dataset.url)));
+ }catch(e){$('#files').innerHTML='<p class="hint">Could not list this folder: '+esc(e.message)+'. The repository may be empty or contain a very large directory.</p>'}
+}
+async function previewFile(path,url){
+ $('#previewTitle').textContent=path.split('/').pop();$('#previewContent').innerHTML='<p class="hint">Loading file…</p>';
+ $('#githubFile').href=url||'https://github.com/'+owner+'/'+currentRepo.name+'/blob/'+currentRepo.default_branch+'/'+path;$('#githubFile').hidden=false;
+ try{
+  const file=await gh(api+'/repos/'+owner+'/'+currentRepo.name+'/contents/'+path.split('/').map(encodeURIComponent).join('/')+'?ref='+encodeURIComponent(currentRepo.default_branch));
+  if(file.type!=='file'||!file.content)throw new Error('This item cannot be previewed as a text file.');
+  const decoded=decodeURIComponent(escape(atob(file.content.replace(/\s/g,''))));
+  const ext=path.split('.').pop().toLowerCase();
+  if(/^(png|jpg|jpeg|gif|webp|ico|pdf|zip|woff2?|ttf|mp4|mp3)$/i.test(ext)){$('#previewContent').innerHTML='<p class="hint">This looks like a binary asset. Open it on GitHub to inspect or download it.</p>';return}
+  const pre=document.createElement('pre');pre.textContent=decoded;$('#previewContent').replaceChildren(pre);
+ }catch(e){$('#previewContent').innerHTML='<p class="hint">Preview unavailable: '+esc(e.message)+'. You can still open the file on GitHub.</p>'}
+}
+$('#search').addEventListener('input',render);
+$('#close').addEventListener('click',()=>{$('#overlay').classList.remove('open');document.body.style.overflow=''});
+$('#overlay').addEventListener('click',e=>{if(e.target===$('#overlay')){$('#overlay').classList.remove('open');document.body.style.overflow=''}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#overlay').classList.remove('open');document.body.style.overflow=''}});
+load();
 </script></body></html>
