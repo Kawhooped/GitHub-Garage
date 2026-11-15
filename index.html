@@ -81,6 +81,14 @@ body{background:var(--bg);color:var(--ink);font:14px/1.55 Inter,ui-sans-serif,sy
 @media(max-width:850px){.hero{grid-template-columns:1fr 190px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.shell{padding-top:16px}.mainnav{margin-left:-18px;margin-right:-18px;padding-left:18px;padding-right:18px}.hero{grid-template-columns:1fr;gap:18px;padding:32px 0 18px}.stats{max-width:100%}.grid{grid-template-columns:1fr}.sectionhead h3{font-size:17px}.filters{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px}.filter{white-space:nowrap}.overlay{padding:0}}
 
+
+.private-workbench{margin:30px 0 12px;padding:18px;border:1px solid #d6dccb;background:#e8ecdf;border-radius:11px}
+.private-workbench .private-label{font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:#668a2d;font-weight:800}
+.private-workbench h3{margin:5px 0;font-size:18px;letter-spacing:-.03em}
+.private-workbench p{margin:4px 0 12px;color:#687064;font-size:12px}
+.private-workbench a{display:inline-flex;text-decoration:none;background:#20251d;color:#f3f5e9;border-radius:7px;padding:9px 12px;font-size:11px;font-weight:700}
+.private-workbench a:hover{background:#35432a}
+
 </style>
 </head>
 <body><main class="shell" id="main-page">
@@ -104,6 +112,13 @@ body{background:var(--bg);color:var(--ink);font:14px/1.55 Inter,ui-sans-serif,sy
 <div class="sectionhead" id="repository-cards"><h3>Choose a workbench</h3><span id="shown">Loading repositories…</span></div>
 <div class="toolbar"><input class="search" id="search" type="search" placeholder="Search projects, tools, experiments…" aria-label="Search repositories"><div class="filters" id="filters"></div></div>
 <div class="grid" id="grid"><div class="loading">Rolling up the garage doors…</div></div>
+
+<section class="private-workbench" id="private-workbenches">
+<div class="private-label">🔒 Private workbench · GitHub sign-in required</div>
+<h3>Frontier Games</h3>
+<p>A private intelligence laboratory for exploration, invention, strategy evolution, cross-domain discovery, and self-expanding games. The project page and its contents remain in a private repository.</p>
+<a href="https://github.com/Kawhooped/voidd-shelf/blob/dd-main/frontier-games/index.html" target="_blank" rel="noopener">Open private Frontier Games ↗</a>
+</section>
 <section class="explorer-directory" id="repository-explorer"><div class="sectionhead"><h3>Repository Explorer</h3><span>Choose a workbench to open its files and folders.</span></div><div class="explorer-links" id="explorerLinks"><span class="hint">Loading destinations…</span></div></section>
 <footer class="footer" id="page-footer"><span><strong>GitHub Garage</strong> · Built to keep building.</span><span><a href="https://github.com/Kawhooped/GitHub-Garage">Source ↗</a> · Public repository explorer · Private projects stay private.</span></footer>
 </main>
