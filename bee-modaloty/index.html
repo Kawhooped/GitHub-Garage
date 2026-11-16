@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#172b22">
+<title>Bee Modaloty 🐝</title>
+<style>
+:root{--ink:#20372b;--muted:#66766a;--paper:#f6f3e8;--panel:#fffdf5;--leaf:#52734f;--leaf2:#dce8c9;--gold:#e9b94e;--rose:#d98c86;--line:#e5e0cf;--shadow:0 12px 35px #233b2812}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.45 ui-rounded,"Segoe UI",system-ui,sans-serif}
+button{font:inherit;cursor:pointer;border:0;border-radius:12px;padding:10px 14px;background:var(--leaf);color:white;font-weight:750;transition:.15s}
+button:hover{filter:brightness(1.08);transform:translateY(-1px)}button:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.wrap{max-width:1180px;margin:auto;padding:22px}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+.brand{display:flex;align-items:center;gap:12px}.bee-logo{font-size:42px;background:#f1df9d;border-radius:16px;padding:6px 12px}
+h1{font-size:clamp(25px,4vw,38px);line-height:1;margin:0;letter-spacing:-1.5px} .subtitle{color:var(--muted);margin:5px 0 0}
+.pill{background:#e8eddf;border:1px solid #d9e1d1;padding:7px 11px;border-radius:99px;color:#486347;font-size:12px;font-weight:800}
+.grid{display:grid;grid-template-columns:1.5fr 1fr;gap:16px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:17px;box-shadow:var(--shadow)}
+.meadow{position:relative;overflow:hidden;min-height:330px;background:linear-gradient(#dcebdc 0 53%,#a9c58d 53% 100%);border-radius:14px;padding:16px}
+.sky{position:absolute;inset:0 0 47%;background:linear-gradient(#d9e9e7,#e9efd8);pointer-events:none}
+.sun{position:absolute;right:9%;top:9%;width:46px;height:46px;border-radius:50%;background:#f4d77f;box-shadow:0 0 0 12px #f4d77f33}
+.cloud{position:absolute;top:22%;left:15%;font-size:32px;opacity:.55}
+.hill{position:absolute;bottom:0;width:120%;height:52%;left:-10%;background:#a8c78d;border-radius:50% 50% 0 0/30% 30% 0 0}
+.flowers{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-around;padding:0 5% 14px;font-size:clamp(28px,5vw,48px);z-index:1}
+.flower{filter:drop-shadow(0 4px 2px #405b2830);animation:sway 3s ease-in-out infinite alternate}.flower:nth-child(2n){animation-delay:-1.4s}
+@keyframes sway{to{transform:rotate(8deg) translateY(-3px)}}
+.bees{position:absolute;z-index:2;left:10%;right:10%;top:35%;display:flex;justify-content:space-around;flex-wrap:wrap;gap:12px;font-size:25px;filter:drop-shadow(0 3px 2px #36452c44)}
+.meadow-label{position:absolute;z-index:3;left:14px;top:12px;background:#ffffffc9;padding:6px 10px;border-radius:9px;font-size:12px;font-weight:800}
+.meadow-foot{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:12px;color:var(--muted);font-size:12px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:14px 0}
+.stat{background:#f5f3e9;border:1px solid var(--line);border-radius:13px;padding:11px}.stat small{display:block;color:var(--muted);font-weight:700}.stat strong{font-size:23px;letter-spacing:-1px}
+h2{font-size:17px;margin:0 0 12px;letter-spacing:-.3px}.section{margin-top:16px}
+.bar{height:8px;border-radius:99px;background:#e8e6d9;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;background:var(--leaf);border-radius:99px}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:9px}.controls button{min-height:46px}.controls .primary{background:#d49b32;color:#2c2c1d}.controls .soft{background:#e8eddf;color:#3d5b3e}
+.strategy{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.strategy button{background:#edf0e5;color:#3d5840;border:1px solid #dce4d3;text-align:left}.strategy button.active{background:#dce9cf;border-color:#8da77d;box-shadow:inset 0 0 0 1px #8da77d}
+.traits{display:grid;grid-template-columns:1fr 1fr;gap:10px}.trait{font-size:12px;color:var(--muted)}.trait b{float:right;color:var(--ink)}.trait .bar{height:6px}
+.log{max-height:210px;overflow:auto;display:flex;flex-direction:column;gap:8px}.event{padding:9px 11px;background:#f5f3e9;border-radius:10px;font-size:13px}.event b{color:#4b6848}
+.generation{display:flex;align-items:center;justify-content:space-between;gap:10px}.badge{font-size:12px;font-weight:800;background:#f4e8bd;color:#775b20;border-radius:99px;padding:5px 9px}
+.footer{margin:20px 0 6px;color:var(--muted);font-size:12px;text-align:center}
+.modal{position:fixed;inset:0;background:#16251dcc;display:none;place-items:center;padding:20px;z-index:10}.modal.show{display:grid}.modal-card{max-width:520px;width:100%;background:var(--panel);padding:22px;border-radius:20px;box-shadow:0 20px 70px #0005}.modal-card p{color:var(--muted)}
+@media(max-width:780px){.wrap{padding:14px}.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}header{align-items:flex-start}.pill{display:none}.meadow{min-height:280px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="brand"><div class="bee-logo">🐝</div><div><h1>Bee Modaloty</h1><p class="subtitle">A tiny world. A thousand ways to survive.</p></div></div><span class="pill">🧬 GENETIC SURVIVAL SIMULATOR · v0.1</span></header>
+<div class="stats">
+<div class="stat"><small>🐝 Living colony</small><strong id="population">24</strong></div>
+<div class="stat"><small>🌼 Nectar stores</small><strong id="nectar">42</strong></div>
+<div class="stat"><small>🌱 Meadow health</small><strong id="health">82%</strong></div>
+<div class="stat"><small>🧬 Generation</small><strong id="generation">1 / 20</strong></div>
+</div>
+<div class="grid">
+<main>
+<section class="panel">
+<div class="generation"><h2>🌿 The living meadow</h2><span class="badge" id="season">SPRING · DAY 1</span></div>
+<div class="meadow"><div class="sky"></div><div class="sun"></div><div class="cloud">☁️</div><div class="hill"></div><div class="meadow-label" id="weather">☀️ Mild weather</div><div class="bees" id="bees">🐝 🐝 🐝 🐝 🐝 🐝 🐝</div><div class="flowers"><span class="flower">🌼</span><span class="flower">🌸</span><span class="flower">🌻</span><span class="flower">🪻</span><span class="flower">🌺</span><span class="flower">🌼</span></div></div>
+<div class="meadow-foot"><span id="flowerStatus">🌼 Bloom: abundant</span><span id="predatorStatus">🕷️ Predator pressure: low</span></div>
+</section>
+<section class="panel section"><h2>🧭 Colony priorities</h2><div class="strategy" id="strategies">
+<button data-mode="balanced" class="active">⚖️ Balanced living</button><button data-mode="forage">🌼 Heavy foraging</button><button data-mode="care">🪺 Brood & care</button><button data-mode="defense">🛡️ Nest defense</button>
+</div><p style="font-size:12px;color:var(--muted);margin:10px 0 0">Your choices guide the colony. Individual bees act according to their inherited traits.</p></section>
+<section class="panel section"><h2>🧬 Colony trait profile</h2><div class="traits" id="traits"></div></section>
+</main>
+<aside>
+<section class="panel"><h2>⏳ What happens next?</h2><p style="color:var(--muted);font-size:13px;margin-top:-5px">Advance one day to forage, face the weather, and test your colony's adaptations.</p><div class="controls"><button class="primary" id="advance">▶ Advance day</button><button class="soft" id="breed">🧬 New generation</button><button class="soft" id="inspect">🔎 Inspect genes</button><button class="soft" id="reset">↻ Restart</button></div><div class="section"><div style="display:flex;justify-content:space-between"><small>Colony vitality</small><b id="vitalityText">78%</b></div><div class="bar"><i id="vitalityBar" style="width:78%"></i></div><div style="display:flex;justify-content:space-between;margin-top:12px"><small>Brood readiness</small><b id="broodText">65%</b></div><div class="bar"><i id="broodBar" style="width:65%"></i></div></div></section>
+<section class="panel section"><h2>📜 Field notes</h2><div class="log" id="log" aria-live="polite"></div></section>
+<section class="panel section"><h2>🏆 The long game</h2><p style="font-size:13px;color:var(--muted);margin:0">Survive <b>20 generations</b>, keep the meadow healthy, and discover which inherited traits fit this changing world.</p><div class="section" style="display:flex;justify-content:space-between"><span>Generations survived</span><b id="score">0 / 20</b></div><div class="bar"><i id="scoreBar" style="width:0%"></i></div><p id="status" style="font-size:12px;color:var(--muted)">The first bloom is waiting.</p></section>
+</aside>
+</div>
+<p class="footer">🌱 No perfect bee. Only bees adapted to particular worlds. · A GitHub Garage field experiment</p>
+</div>
+<div class="modal" id="modal"><div class="modal-card"><div class="generation"><h2 id="modalTitle">🧬 Gene notebook</h2><button id="closeModal">✕</button></div><div id="modalBody"></div></div></div>
+<script>
+(()=>{
+const $=id=>document.getElementById(id);
+const clamp=(n,a=0,b=100)=>Math.max(a,Math.min(b,n));
+const rand=(a,b)=>Math.random()*(b-a)+a;
+const traitsList=[["Tongue length","tongue"],["Flight speed","speed"],["Heat tolerance","heat"],["Cold tolerance","cold"],["Navigation","nav"],["Disease resistance","immune"],["Fertility","fertility"],["Lifespan","life"],["Social coordination","social"]];
+const base={tongue:58,speed:52,heat:50,cold:48,nav:56,immune:50,fertility:55,life:52,social:60};
+let s;
+function fresh(){return {pop:24,nectar:42,pollen:28,health:82,vitality:78,brood:65,gen:1,day:1,mode:"balanced",season:0,weather:"Mild weather",pred:15,flowers:82,genes:{...base},history:[],log:[],dead:false,won:false};}
+function note(msg){s.log.unshift(msg);s.log=s.log.slice(0,9);renderLog();}
+function renderLog(){$("log").innerHTML=s.log.map(x=>'<div class="event">'+x+'</div>').join("")||'<div class="event">🌱 A new colony begins.</div>';}
+function renderTraits(){$("traits").innerHTML=traitsList.map(([label,key])=>{let v=Math.round(s.genes[key]);return '<div class="trait">'+label+' <b>'+v+'</b><div class="bar"><i style="width:'+v+'%"></i></div></div>'}).join("");}
+function render(){
+$("population").textContent=s.pop;$("nectar").textContent=Math.round(s.nectar);$("health").textContent=Math.round(s.health)+"%";$("generation").textContent=s.gen+" / 20";
+const seasons=["SPRING","SUMMER","AUTUMN","WINTER"];$("season").textContent=seasons[s.season]+" · DAY "+s.day;$("weather").textContent=s.weather;$("flowerStatus").textContent="🌼 Bloom: "+(s.flowers>65?"abundant":s.flowers>35?"patchy":"scarce");$("predatorStatus").textContent="🕷️ Predator pressure: "+(s.pred<30?"low":s.pred<65?"moderate":"high");
+$("bees").textContent=Array.from({length:Math.min(16,Math.max(2,Math.ceil(s.pop/3)))},()=>Math.random()>.18?"🐝":"✨").join(" ");
+$("vitalityText").textContent=Math.round(s.vitality)+"%";$("vitalityBar").style.width=s.vitality+"%";$("broodText").textContent=Math.round(s.brood)+"%";$("broodBar").style.width=s.brood+"%";
+$("score").textContent=(s.gen-1)+" / 20";$("scoreBar").style.width=clamp((s.gen-1)/20*100)+"%";
+$("status").textContent=s.won?"🏆 The colony has reached 20 generations!":s.dead?"💀 The colony has gone extinct. The meadow remembers.":"Every generation is an experiment.";
+document.querySelectorAll("[data-mode]").forEach(b=>b.classList.toggle("active",b.dataset.mode===s.mode));
+$("advance").disabled=s.dead||s.won;$("breed").disabled=s.dead||s.won||s.pop<3;
+renderTraits();renderLog();
+}
+function advance(){
+if(s.dead||s.won)return;
+s.day++;let seasonIndex=Math.floor((s.day-1)/4)%4;s.season=seasonIndex;
+const weatherRoll=Math.random();s.weather=weatherRoll<.17?"🌧️ Heavy rain":weatherRoll<.34?"🔥 Heat wave":weatherRoll<.48?"💨 Strong wind":weatherRoll<.62?"❄️ Cold snap":"☀️ Mild weather";
+s.flowers=clamp(s.flowers+rand(-12,9)+(s.season===0?8:s.season===3?-12:0));s.pred=clamp(s.pred+rand(-8,10));
+const g=s.genes,weather=s.weather;
+let gather=(s.mode==="forage"?14:s.mode==="care"?5:s.mode==="defense"?7:10)+g.speed*.045+g.nav*.055+g.social*.025+g.tongue*.025;
+gather*=s.flowers/75;if(weather.includes("rain"))gather*=.68;if(weather.includes("wind"))gather*=.78;if(weather.includes("Heat"))gather*=Math.max(.5,g.heat/100);if(weather.includes("Cold"))gather*=Math.max(.45,g.cold/100);
+s.nectar=clamp(s.nectar+gather- (s.pop*.18),0,180);s.pollen=clamp(s.pollen+gather*.45-s.pop*.07,0,160);
+let pollination=Math.max(1,gather*.12);s.health=clamp(s.health+pollination-(s.mode==="forage"?5:2.1)-(s.flowers<25?2:0));
+let risk=s.pred*.0025+(100-g.immune)*.0018+(weather.includes("Heat")?(100-g.heat)*.002:0)+(weather.includes("Cold")?(100-g.cold)*.002:0);
+if(s.mode==="defense")risk*=.58;
+let losses=Math.max(0,Math.floor(s.pop*(risk+rand(0,.035))));s.pop=Math.max(0,s.pop-losses);
+let careBonus=s.mode==="care"?13:s.mode==="balanced"?5:0;
+s.brood=clamp(s.brood+careBonus+(s.pollen>15?4:-9)-8);
+s.vitality=clamp(s.vitality+(s.nectar>20?4:-12)+(s.health>40?2:-8)-losses*1.3);
+if(s.nectar<8){s.pop=Math.max(0,s.pop-2);note("🥀 Food ran low. Two more bees were lost.");}
+if(losses)note("🕷️ "+losses+" bees were lost to pressure from the environment.");
+if(s.health<30)note("🌱 The meadow is struggling. Pollination and recovery matter.");
+if(s.nectar>110)note("🍯 Stores are thriving. The colony has room to recover.");
+if(s.day%4===0){s.season=(s.season+1)%4;note("🍂 The season turns. The selection pressures will change.");}
+if(s.pop===0||s.vitality===0){s.dead=true;note("💀 The colony has gone extinct. Try a different strategy or gene mix.");}
+if(s.pop>0&&s.gen>=20){s.won=true;note("🏆 Twenty generations! Your colony made it.");}
+render();
+}
+function mutate(v){return clamp(v+rand(-7,7));}
+function breed(){
+if(s.dead||s.won||s.pop<3)return;
+let old={...s.genes};let next={};for(let k in old)next[k]=mutate(old[k]+rand(-2,2));
+s.genes=next;
+let fitness=(s.nectar/100+s.health/100+s.vitality/100+s.brood/100)/4;
+let growth=Math.round((s.mode==="care"?5:s.mode==="balanced"?3:1)+growingBonus(next)-Math.max(0,35-s.pop)*.12);
+function growingBonus(g){return (g.fertility+g.social+g.life)/100*2;}
+let change=Math.round(rand(-2,2)+fitness*growth);s.pop=clamp(s.pop+change,1,90);
+s.gen++;s.day=1;s.season=(s.season+1)%4;s.history.push({gen:s.gen,genes:{...next},pop:s.pop});
+s.nectar=Math.max(0,s.nectar-8);s.brood=clamp(s.brood+rand(-8,8));s.vitality=clamp(s.vitality+rand(-5,6));
+let changed=traitsList.map(([n,k])=>[n,Math.round(next[k]-old[k])]).sort((a,b)=>Math.abs(b[1])-Math.abs(a[1]))[0];
+note("🧬 Generation "+s.gen+" emerged. "+changed[0]+" shifted "+(changed[1]>=0?"+":"")+changed[1]+" points. Population: "+s.pop+".");
+if(s.pop===0){s.dead=true;note("💀 The lineage ended.");}if(s.gen>=20&&s.pop>0&&s.health>15){s.won=true;note("🏆 Twenty generations survived!");}
+render();
+}
+function showGenes(){
+$("modalTitle").textContent="🧬 Gene notebook";
+$("modalBody").innerHTML="<p>Traits are inherited with small random changes. Their usefulness depends on the environment, and high values can carry tradeoffs in the simulation.</p>"+traitsList.map(([n,k])=>"<p><b>"+n+"</b> · "+Math.round(s.genes[k])+"/100</p>").join("")+"<p>🌼 Try changing colony priorities and observing which traits persist.</p>";
+$("modal").classList.add("show");
+}
+function reset(){s=fresh();s.history=[{gen:1,genes:{...s.genes},pop:s.pop}];note("🐝 A new colony has settled into the meadow.");render();}
+$("advance").addEventListener("click",advance);$("breed").addEventListener("click",breed);$("inspect").addEventListener("click",showGenes);$("reset").addEventListener("click",reset);$("closeModal").addEventListener("click",()=>$("modal").classList.remove("show"));
+document.querySelectorAll("[data-mode]").forEach(b=>b.addEventListener("click",()=>{s.mode=b.dataset.mode;note("🧭 Colony priority changed: "+b.textContent+".");render();}));
+reset();
+})();
+</script>
+</body>
+</html>
