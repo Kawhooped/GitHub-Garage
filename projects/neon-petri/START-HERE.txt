@@ -1,0 +1,1 @@
+Open the published Neon Petri website in your browser. This file exists only to trigger the first website publication after GitHub Pages was enabled.
