@@ -7,7 +7,10 @@ GitHub Garage is an interactive workshop map for the public GitHub projects owne
 ## What works today
 
 - Discovers public repositories from the GitHub user API.
-- Displays projects as searchable, categorized workshop cards.
+- Displays public repositories as searchable, categorized workshop cards.
+- Loads the canonical public VOIDD catalog from `voidd-sales/api/library.json` into a searchable App Library.
+- Filters catalog entries by kind and links to their live destinations.
+- Keeps private shelf entries out of the public site by requiring `visibility: public`.
 - Opens a repository explorer from each project card.
 - Browses repository folders and files using the GitHub Contents API.
 - Previews text files in the browser and links back to the original GitHub file.
@@ -51,14 +54,16 @@ Cloudflare Pages serves `index.html` from the repository root. Pushes to `dd-mai
 
 ## Roadmap
 
-1. **Repository explorer** — public repository and file browsing. Initial version implemented.
-2. **Workbench** — create and edit files, inspect diffs, and commit changes.
-3. **Live previews** — open and test project websites and prototypes.
-4. **AI collaborator gateway** — authorized AI-assisted repository work through a secure backend.
-5. **Project factory** — scaffold projects and create repositories through authorized GitHub API operations.
-6. **Launch bay** — connect deployments and publishing workflows.
+1. **Public App Library** — connected to the canonical `voidd-sales/api/library.json`; implemented.
+2. **Repository explorer** — public repository and file browsing; implemented.
+3. **Catalog consolidation** — reconcile the separate `voidd-hub/api/feed.json` into the canonical library without duplicates; pending.
+4. **Private shelf view** — authenticated, server-mediated access to private catalog entries; pending.
+5. **AI Rooms and Shared Chat** — persistent conversations, real provider integrations, and Council mode; pending.
+6. **Workbench and live previews** — edit files, inspect diffs, test project previews; pending.
+7. **Secure AI collaborator gateway and Project Factory** — authorized AI-assisted repository work; pending.
+8. **Knowledge Library, Activity, and Launch Bay** — searchable shared knowledge, verified activity, deployment and publishing workflows; pending.
 
-Items 2–6 are planned, not currently implemented.
+Only items explicitly marked implemented are currently available. No model calls or private repository contents are exposed by the public site.
 
 ## Security boundaries
 
