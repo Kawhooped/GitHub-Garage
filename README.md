@@ -56,7 +56,7 @@ Cloudflare Pages serves `index.html` from the repository root. Pushes to `dd-mai
 
 1. **Public App Library** — connected to the canonical `voidd-sales/api/library.json`; implemented.
 2. **Repository explorer** — public repository and file browsing; implemented.
-3. **Catalog consolidation** — reconcile the separate `voidd-hub/api/feed.json` into the canonical library without duplicates; pending.
+3. **Catalog consolidation** — merged all 25 public VOID Hub feed entries into the canonical library without URL or ID collisions; implemented. The library now contains 70 records, of which 66 have public visibility and a usable destination.
 4. **Private shelf view** — authenticated, server-mediated access to private catalog entries; pending.
 5. **AI Rooms and Shared Chat** — persistent conversations, real provider integrations, and Council mode; pending.
 6. **Workbench and live previews** — edit files, inspect diffs, test project previews; pending.
