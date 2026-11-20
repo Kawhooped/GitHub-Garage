@@ -172,14 +172,16 @@ Security:
 - Resolves relative catalog URLs against the catalog's declared `home` URL.
 - Displays only records explicitly marked `visibility: public` and with a usable destination.
 - Existing public repository cards and repository/file explorer remain intact.
+- Merged all 25 entries from `voidd-hub/api/feed.json` into `voidd-sales/api/library.json`; no URL or ID collisions were found.
+- Canonical catalog now contains 70 records; 66 are public and launchable.
+- Search now includes catalog tags; tag labels are displayed on cards.
 - Next rooms section links to this blueprint and clearly identifies AI/chat spaces as planned rather than functional.
 
 ### Next build targets
-1. Reconcile `voidd-hub/api/feed.json` into the canonical library without duplicates.
-2. Design the private shelf view behind server-side authentication; never expose private catalog records in the public static app.
-3. Implement persistent Light Chat and real provider connections with explicit user-controlled credentials and budgets.
-4. Add one shared conversation that supports selected AI participants (Council mode), rather than separate disconnected chat windows.
-5. Add project-linked Knowledge Library, Workbench, Activity, and Launch Bay.
+1. Design the private shelf view behind server-side authentication; never expose private catalog records in the public static app.
+2. Implement persistent Light Chat and real provider connections with explicit user-controlled credentials and budgets.
+3. Add one shared conversation that supports selected AI participants (Council mode), rather than separate disconnected chat windows.
+4. Add project-linked Knowledge Library, Workbench, Activity, and Launch Bay.
 
 Do not build decorative mock controls for AI chat: connect real providers only when server-side credentials, persistence, and cost controls are in place.
 
