@@ -164,18 +164,24 @@ Security:
 - Add agent task queues and verification.
 - Expand to MINDROOM as a separate social product when the shared chat foundation is stable.
 
-## Immediate next build target
+## Implementation status
 
-Create a unified home screen with:
-1. App Library
-2. AI Rooms
-3. Shared Chat
-4. Projects / Repositories
-5. Workbench
-6. Knowledge Library
-7. Activity
+### Implemented in GitHub Garage (`dd-main`)
+- App Library section with search and kind filters.
+- Reads the canonical public catalog from `Kawhooped/voidd-sales/api/library.json`.
+- Resolves relative catalog URLs against the catalog's declared `home` URL.
+- Displays only records explicitly marked `visibility: public` and with a usable destination.
+- Existing public repository cards and repository/file explorer remain intact.
+- Next rooms section links to this blueprint and clearly identifies AI/chat spaces as planned rather than functional.
 
-The first milestone is a functioning, connected catalog and navigation layer. Do not build decorative mock controls for AI chat: connect real providers only when server-side credentials, persistence, and cost controls are in place.
+### Next build targets
+1. Reconcile `voidd-hub/api/feed.json` into the canonical library without duplicates.
+2. Design the private shelf view behind server-side authentication; never expose private catalog records in the public static app.
+3. Implement persistent Light Chat and real provider connections with explicit user-controlled credentials and budgets.
+4. Add one shared conversation that supports selected AI participants (Council mode), rather than separate disconnected chat windows.
+5. Add project-linked Knowledge Library, Workbench, Activity, and Launch Bay.
+
+Do not build decorative mock controls for AI chat: connect real providers only when server-side credentials, persistence, and cost controls are in place.
 
 ## Evidence and status
 
