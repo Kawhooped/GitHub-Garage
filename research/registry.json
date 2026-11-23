@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "updated": "2026-11-22",
+  "project": "Code Space",
+  "principle": "Independent intelligence. Shared knowledge. Recoverable work.",
+  "evidence_labels": [
+    "observed",
+    "user-stated",
+    "inferred",
+    "hypothesis",
+    "unknown"
+  ],
+  "studies": [
+    {
+      "id": "CS-000",
+      "title": "Research Organization & Observatory",
+      "area": "Research infrastructure",
+      "status": "active",
+      "objective": "Organize investigations into a glanceable, connected, recoverable research landscape.",
+      "document": "studies/CS-000-observatory.md",
+      "tags": [
+        "registry",
+        "dashboard",
+        "knowledge"
+      ],
+      "verified_findings": 0,
+      "open_questions": 4,
+      "next_action": "Test the registry-backed Observatory."
+    },
+    {
+      "id": "CS-001",
+      "title": "Communication Between Research Entities",
+      "area": "Communication",
+      "status": "active",
+      "objective": "Find the simplest reliable way for independent participants to exchange tasks, findings, files, and acknowledgements.",
+      "document": "studies/CS-001-communication.md",
+      "tags": [
+        "email",
+        "messages",
+        "delivery"
+      ],
+      "verified_findings": 0,
+      "open_questions": 5,
+      "next_action": "Run a two-party email handoff."
+    },
+    {
+      "id": "CS-002",
+      "title": "Persistent Research Memory",
+      "area": "Memory",
+      "status": "planned",
+      "objective": "Keep findings, decisions, evidence, and open questions findable across sessions and interruptions.",
+      "document": "studies/CS-002-memory.md",
+      "tags": [
+        "records",
+        "search",
+        "versioning"
+      ],
+      "verified_findings": 0,
+      "open_questions": 5,
+      "next_action": "Compare Markdown plus Git with a structured index."
+    },
+    {
+      "id": "CS-003",
+      "title": "Independent Research Entities",
+      "area": "Intelligence",
+      "status": "planned",
+      "objective": "Test separate workers investigating independently and contributing compatible results.",
+      "document": "studies/CS-003-entities.md",
+      "tags": [
+        "agents",
+        "independence",
+        "evaluation"
+      ],
+      "verified_findings": 0,
+      "open_questions": 5,
+      "next_action": "Define a bounded two-worker comparison."
+    },
+    {
+      "id": "CS-004",
+      "title": "Continuity, Backup & Recovery",
+      "area": "Continuity",
+      "status": "planned",
+      "objective": "Restore research records and resume work after deletion, outage, or environment loss.",
+      "document": "studies/CS-004-recovery.md",
+      "tags": [
+        "backup",
+        "replication",
+        "integrity"
+      ],
+      "verified_findings": 0,
+      "open_questions": 5,
+      "next_action": "Define recovery objectives and test a restore."
+    },
+    {
+      "id": "CS-005",
+      "title": "Research Activity & Observability",
+      "area": "Monitoring",
+      "status": "planned",
+      "objective": "Show progress, dependencies, blockers, discoveries, and next actions without opening chats.",
+      "document": "studies/CS-005-observability.md",
+      "tags": [
+        "dashboard",
+        "events",
+        "metrics"
+      ],
+      "verified_findings": 0,
+      "open_questions": 4,
+      "next_action": "Specify the minimum useful dashboard fields."
+    }
+  ]
+}
