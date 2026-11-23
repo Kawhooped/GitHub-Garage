@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101018"><title>APK Workshop — VOID</title>
+<style>
+:root{--bg:#0d0d14;--panel:#171722;--panel2:#20202d;--ink:#f4f1ff;--muted:#a7a3b8;--line:#343346;--violet:#a78bfa;--mint:#8de6c4;--pink:#ff9acb}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#342452 0,transparent 38%),var(--bg);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,sans-serif}
+main{max-width:1080px;margin:auto;padding:34px 22px 70px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:52px}.brand{font-size:13px;letter-spacing:.18em;color:var(--mint);font-weight:800}.tag{border:1px solid var(--line);border-radius:99px;padding:7px 12px;color:var(--muted);font-size:12px}
+.hero{max-width:720px;margin-bottom:32px}.eyebrow{color:var(--pink);font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.hero h1{font-size:clamp(38px,7vw,68px);line-height:.98;letter-spacing:-.055em;margin:13px 0 17px}.hero p{color:var(--muted);font-size:17px;max-width:620px}
+.grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:18px}.panel{background:linear-gradient(145deg,#1a1a27,#14141e);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 18px 55px #0003}.panel h2{font-size:17px;margin:0 0 5px}.sub{color:var(--muted);font-size:13px;margin:0 0 20px}
+label{display:block;font-size:12px;color:#c8c4d8;font-weight:700;margin:16px 0 7px}input,textarea,select{width:100%;border:1px solid var(--line);border-radius:11px;background:#101019;color:var(--ink);padding:12px 13px;font:inherit;outline:none}input:focus,textarea:focus,select:focus{border-color:var(--violet)}textarea{min-height:160px;resize:vertical;font:13px/1.55 ui-monospace,monospace}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.drop{border:1px dashed #62577e;border-radius:13px;padding:14px;color:var(--muted);font-size:13px}.drop input{padding:8px;margin-top:7px}
+button{border:0;border-radius:11px;padding:12px 16px;font-weight:800;cursor:pointer;font:inherit}.primary{background:var(--violet);color:#171222}.secondary{background:var(--panel2);color:var(--ink);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.status{margin-top:14px;color:var(--mint);font-size:13px;min-height:20px}
+.steps{display:grid;gap:12px}.step{display:flex;gap:12px;align-items:flex-start;padding:13px;border:1px solid var(--line);border-radius:13px;background:#ffffff04}.num{width:27px;height:27px;border-radius:9px;background:#342b4b;color:#d8c8ff;display:grid;place-items:center;font-weight:800;flex:none}.step b{display:block;font-size:13px}.step span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.note{margin-top:18px;padding:14px;border-radius:13px;background:#262039;border:1px solid #51436e;color:#d8d0ed;font-size:12px}.preview{margin-top:18px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#101019}.phonebar{padding:10px 13px;background:#20202d;color:var(--muted);font-size:11px;display:flex;justify-content:space-between}.screen{padding:22px;min-height:180px}.appicon{width:43px;height:43px;border-radius:13px;background:linear-gradient(135deg,var(--violet),var(--pink));display:grid;place-items:center;color:#1b1527;font-weight:900;font-size:20px}.screen h3{margin:13px 0 5px}.screen p{margin:0;color:var(--muted);font-size:12px}
+footer{margin-top:35px;color:#777389;font-size:11px;text-align:center}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.top{margin-bottom:35px}.row{grid-template-columns:1fr}}
+</style></head>
+<body><main>
+<div class="top"><div class="brand">VOID / BUILD LAB</div><div class="tag">EXPERIMENT 001 · ANDROID</div></div>
+<section class="hero"><div class="eyebrow">From idea to installable app</div><h1>Your app.<br>In an APK.</h1><p>Package a small web app as an Android project. Give it a name, drop in your HTML, and generate a ready-to-build project bundle.</p></section>
+<div class="grid">
+<section class="panel"><h2>01 / Configure your app</h2><p class="sub">Start with a web page. You can refine the project before building.</p>
+<label for="appName">App name</label><input id="appName" value="My New App" maxlength="40">
+<div class="row"><div><label for="packageId">Android package ID</label><input id="packageId" value="com.voidlab.myapp"></div><div><label for="version">Version</label><input id="version" value="1.0.0"></div></div>
+<label>App source</label><div class="drop">Paste HTML below, or load an .html file.<input type="file" id="file" accept=".html,.htm,text/html"></div>
+<label for="source">HTML source</label><textarea id="source" spellcheck="false"><!doctype html>
+<html lang="en">
+<head><meta name="viewport" content="width=device-width,initial-scale=1"><meta charset="utf-8"><title>My New App</title></head>
+<body style="font-family:system-ui;padding:2rem;background:#111;color:#fff">
+<h1>Hello, Android.</h1>
+<p>This is your app running inside its own Android shell.</p>
+</body></html></textarea>
+<div class="actions"><button class="primary" id="make">Generate Android project ↗</button><button class="secondary" id="previewBtn">Preview</button></div><div class="status" id="status" aria-live="polite"></div>
+<div class="preview"><div class="phonebar"><span>APP PREVIEW</span><span>ANDROID · WEBVIEW</span></div><div class="screen" id="preview"><div class="appicon">✳</div><h3>My New App</h3><p>Your app preview appears here.</p></div></div>
+</section>
+<aside class="panel"><h2>02 / Build the APK</h2><p class="sub">The browser creates the Android project. A build runner compiles it into an APK.</p>
+<div class="steps">
+<div class="step"><div class="num">1</div><div><b>Generate project ZIP</b><span>Includes your web app, Capacitor setup, Android build workflow, and instructions.</span></div></div>
+<div class="step"><div class="num">2</div><div><b>Run the Android build</b><span>Upload the ZIP to a GitHub repository. Its included Actions workflow builds a debug APK.</span></div></div>
+<div class="step"><div class="num">3</div><div><b>Download your APK</b><span>Get the APK from the completed GitHub Actions artifact and install it on your Android device.</span></div></div>
+</div>
+<div class="note"><b>Build status: project generator</b><br>This first version generates the Android project bundle. It does not compile APKs on this website yet. A secure remote build service is the next integration; no GitHub token or signing key is requested or stored here.</div>
+<div class="actions"><button class="secondary" id="guide">Show build guide</button></div><div id="guideText" class="sub" style="display:none;margin-top:14px">Create a new GitHub repository, upload the unzipped project contents, then open Actions and run “Build Android APK”. When the workflow finishes, download the artifact named <b>android-debug-apk</b>. For Play Store release builds, add protected signing secrets and a release workflow.</div>
+</aside></div>
+<footer>APK WORKSHOP · A VOID NETWORK EXPERIMENT · No credentials stored in this page.</footer>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const defaultHtml=$('source').value;
+$('file').addEventListener('change',async e=>{const f=e.target.files[0];if(f){$('source').value=await f.text();renderPreview();}});
+function renderPreview(){const doc=new DOMParser().parseFromString($('source').value,'text/html');$('preview').replaceChildren();const icon=document.createElement('div');icon.className='appicon';icon.textContent=($('appName').value.trim()[0]||'A').toUpperCase();const h=document.createElement('h3');h.textContent=doc.title||$('appName').value;const p=document.createElement('p');p.textContent=(doc.body?.innerText||'Your app preview appears here.').trim().slice(0,140);$('preview').append(icon,h,p);}
+$('previewBtn').onclick=renderPreview;$('appName').oninput=renderPreview;
+$('guide').onclick=()=>{$('guideText').style.display=$('guideText').style.display==='none'?'block':'none';};
+$('make').onclick=async()=>{
+ const name=$('appName').value.trim()||'My App',pkg=$('packageId').value.trim(),version=$('version').value.trim()||'1.0.0',html=$('source').value;
+ if(!/^[a-zA-Z][a-zA-Z0-9_]*(\.[a-zA-Z][a-zA-Z0-9_]*){1,}$/.test(pkg)){ $('status').textContent='Package ID needs at least two dot-separated parts, e.g. com.example.app';return;}
+ if(!html.trim()){ $('status').textContent='Add your app HTML first.';return;}
+ if(typeof JSZip==='undefined'){$('status').textContent='Project ZIP library did not load. Check your connection and retry.';return;}
+ $('status').textContent='Preparing your Android project…';
+ const zip=new JSZip();
+ zip.file('www/index.html',html);
+ zip.file('package.json',JSON.stringify({name:pkg.split('.').pop().toLowerCase().replace(/[^a-z0-9-]/g,'-'),version,private:true,scripts:{'build':'echo Web assets ready','android:sync':'npx cap sync android'},dependencies:{'@capacitor/android':'^7.0.0','@capacitor/core':'^7.0.0'},devDependencies:{'@capacitor/cli':'^7.0.0'}},null,2));
+ zip.file('capacitor.config.json',JSON.stringify({appId:pkg,appName:name,webDir:'www',bundledWebRuntime:false},null,2));
+ zip.file('README.md',`# ${name} — Android project
+
+Generated by VOID APK Workshop.
+
+## Build locally
+1. Install Node.js 20+ and Android Studio with the Android SDK.
+2. Run \`npm install\`.
+3. Run \`npx cap add android\`.
+4. Run \`npx cap sync android\`.
+5. Open the \`android\` folder in Android Studio, or run \`cd android && ./gradlew assembleDebug\`.
+6. Debug APK: \`android/app/build/outputs/apk/debug/app-debug.apk\`.
+
+## Build in GitHub Actions
+Push this project to a GitHub repository. Open Actions → Build Android APK → Run workflow. Download the \`android-debug-apk\` artifact when the run completes.
+
+This is a debug build. Play Store publishing requires a separately configured, securely signed release build.
+`);
+ zip.file('.github/workflows/build-android.yml',`name: Build Android APK
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master ]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Add Android platform
+        run: npx cap add android
+      - name: Sync web app
+        run: npx cap sync android
+      - name: Build debug APK
+        working-directory: android
+        run: ./gradlew assembleDebug
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+`);
+ zip.file('.gitignore','node_modules/\nandroid/\n.DS_Store\n');
+ try{const blob=await zip.generateAsync({type:'blob'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=(pkg.split('.').pop()||'android-app')+'-android-project.zip';a.click();setTimeout(()=>URL.revokeObjectURL(url),30000);$('status').textContent='Project ZIP created. Next: upload it to GitHub and run the included Android build workflow.';}catch(err){$('status').textContent='Could not create ZIP: '+err.message;}
+};
+renderPreview();
+</script></body></html>
