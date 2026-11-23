@@ -29,3 +29,13 @@ Browser codec support varies. MP3, AAC/M4A, WAV, OGG, MP4 (H.264/AAC) and WebM a
 5. Add the track to one or more stations and export your library metadata for backup.
 
 Suno share links are catalog references only; this app does not scrape or stream audio from Suno URLs.
+
+
+## Android phone-wide library
+
+The Android companion app is in `android/`. Unlike the browser edition, it requests Android's audio-library permission and queries MediaStore, so it can discover music already indexed on the phone without manually selecting files. Playback runs through Android Media3 in a media session service, enabling background playback and system media controls.
+
+### Build
+A GitHub Actions workflow builds a debug APK when Android source changes. Open the repository's Actions tab, select **Build VOID Music Android**, and download the `void-music-android` artifact after a successful run. Install the APK on Android, open VOID Music, and grant music/audio access when prompted.
+
+The APK is a debug build for personal installation, not a Play Store release. Music remains on the phone; the app reads MediaStore metadata and plays the original content URIs locally.
