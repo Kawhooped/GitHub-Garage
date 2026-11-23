@@ -14,6 +14,7 @@ import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.core.content.ContextCompat
+import androidx.media3.common.util.UnstableApi
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
 import androidx.media3.session.MediaController
@@ -22,6 +23,7 @@ import com.google.common.util.concurrent.ListenableFuture
 import org.json.JSONArray
 import org.json.JSONObject
 
+@UnstableApi
 class MainActivity : Activity() {
     private lateinit var web: WebView
     private var controller: MediaController? = null
