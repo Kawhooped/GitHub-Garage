@@ -73,6 +73,10 @@ Only items explicitly marked implemented are currently available. No model calls
 - Do not publish private project names, descriptions, or contents to this public site or its static assets unless explicitly approved.
 - A future gateway should enforce least-privilege access, validate every requested repository and path, and keep credentials server-side.
 
+## Research Observatory
+
+The Code Space research collection is published under [`research/`](research/). Start at the [Research Observatory](research/) for the study dashboard, registry, charter, and protocols. Study plans are clearly distinguished from tested findings.
+
 ## Related project
 
 The separate [workshop-gateway](https://github.com/Kawhooped/workshop-gateway) repository describes the intended authorized interface for AI collaborators. It is currently a placeholder, not an implemented gateway. GitHub Garage does not yet connect to it.
