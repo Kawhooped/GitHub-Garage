@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "owner": "Kawhooped",
+  "description": "Known VOID network projects. Repository existence is not proof of a live deployment.",
+  "sites": [
+    {
+      "id": "voidd-hub",
+      "name": "VOID Hub",
+      "repo": "voidd-hub",
+      "url": "https://kawhooped.github.io/voidd-hub/",
+      "kind": "Public portal",
+      "deployment": "recorded"
+    },
+    {
+      "id": "voidd-sales",
+      "name": "VOIDD Sales",
+      "repo": "voidd-sales",
+      "url": "https://kawhooped.github.io/voidd-sales/",
+      "kind": "Business / tools",
+      "deployment": "recorded"
+    },
+    {
+      "id": "github-garage",
+      "name": "GitHub Garage",
+      "repo": "GitHub-Garage",
+      "url": "https://github.com/Kawhooped/GitHub-Garage",
+      "kind": "Workshop / control room",
+      "deployment": "repository"
+    },
+    {
+      "id": "farm-board",
+      "name": "Farm Board",
+      "repo": "farm-board",
+      "url": "",
+      "kind": "Coordination index",
+      "deployment": "unverified"
+    },
+    {
+      "id": "ai-coordination",
+      "name": "AI Coordination",
+      "repo": "ai-coordination",
+      "url": "",
+      "kind": "Coordination archive",
+      "deployment": "unverified"
+    },
+    {
+      "id": "dd-lab",
+      "name": "DD Lab",
+      "repo": "dd-lab",
+      "url": "https://github.com/Kawhooped/dd-lab",
+      "kind": "Research",
+      "deployment": "unverified"
+    },
+    {
+      "id": "people-internet",
+      "name": "People's Internet",
+      "repo": "people-internet",
+      "url": "https://github.com/Kawhooped/people-internet",
+      "kind": "Public internet",
+      "deployment": "unverified"
+    },
+    {
+      "id": "plot-lead",
+      "name": "Plot Lead",
+      "repo": "plot-lead",
+      "url": "",
+      "kind": "Plot application",
+      "deployment": "unverified"
+    },
+    {
+      "id": "plot-dignity",
+      "name": "Plot Dignity",
+      "repo": "plot-dignity",
+      "url": "",
+      "kind": "Game / publishing",
+      "deployment": "unverified"
+    },
+    {
+      "id": "plot-coins",
+      "name": "Plot Coins",
+      "repo": "plot-coins",
+      "url": "",
+      "kind": "Plot application",
+      "deployment": "unverified"
+    },
+    {
+      "id": "plot-images",
+      "name": "Plot Images",
+      "repo": "plot-images",
+      "url": "",
+      "kind": "Artist tools",
+      "deployment": "unverified"
+    },
+    {
+      "id": "plot-permits",
+      "name": "Plot Permits",
+      "repo": "plot-permits",
+      "url": "",
+      "kind": "Plot application",
+      "deployment": "unverified"
+    },
+    {
+      "id": "plot-desk",
+      "name": "Plot Desk",
+      "repo": "plot-desk",
+      "url": "",
+      "kind": "Workspace",
+      "deployment": "unverified"
+    },
+    {
+      "id": "plot-eats",
+      "name": "Plot Eats",
+      "repo": "plot-eats",
+      "url": "",
+      "kind": "Food / local",
+      "deployment": "unverified"
+    },
+    {
+      "id": "plot-kit",
+      "name": "Plot Kit",
+      "repo": "plot-kit",
+      "url": "",
+      "kind": "Tools",
+      "deployment": "unverified"
+    },
+    {
+      "id": "plot-essence",
+      "name": "Plot Essence",
+      "repo": "plot-essence",
+      "url": "",
+      "kind": "Creative project",
+      "deployment": "unverified"
+    },
+    {
+      "id": "plot-songs",
+      "name": "Plot Songs",
+      "repo": "plot-songs",
+      "url": "",
+      "kind": "Music",
+      "deployment": "unverified"
+    }
+  ]
+}
