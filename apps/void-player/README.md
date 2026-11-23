@@ -1,24 +1,31 @@
 # VOID Player
 
-A local-first browser music and video player.
-
-## Launch
-Open `index.html` in a modern browser, or publish this folder as a static site.
+A local-first music, video and Suno radio organizer. Single-file static web app; no build step, account, backend or media upload.
 
 ## Features
-- Audio and video playback using the browser's native media engine.
-- Add multiple files, drag and drop, or select a folder.
-- Queue with search, remove, shuffle, repeat, next and previous.
-- Seek, volume control, responsive video stage, and compact playback bar.
-- Keyboard shortcuts: Space (play/pause), Left/Right (seek 5 seconds), J/K (previous/next).
-- No account, server, tracking, or media upload. Files are read locally through temporary browser object URLs.
+- Play local audio and video using the browser's native media engine.
+- Import multiple files, drag/drop, or select a folder.
+- Searchable queue and library; play, remove and edit title, artist/persona and tags.
+- Transport controls: seek, volume, shuffle, repeat, previous/next, keyboard shortcuts.
+- Suno Radio: create named stations (mood, genre, project, era, etc.), add tracks, and play station queues.
+- Add Suno share URLs as catalog entries; import the corresponding downloaded audio file to play it.
+- Export/import station and catalog metadata as JSON.
+- Responsive desktop and mobile layout.
 
-## Compatibility
-Playback depends on the browser and device supporting the file's codec. Common MP3, AAC/M4A, WAV, OGG, MP4 (H.264/AAC), and WebM files are the safest choices. FLAC, MOV, and other formats vary by browser/device. The queue is session-only and is cleared when the page is closed.
-
-## Publish
-This is a static app with no build step. Enable GitHub Pages for the repository and publish from the `dd-main` branch; the app will be available at:
-
+## Use
+Open `index.html` in a modern browser, or publish this folder as a static site:
 `https://kawhooped.github.io/GitHub-Garage/apps/void-player/`
 
-If the repository is already deployed through Cloudflare Pages, the same path is served automatically after the commit is deployed.
+## Media and privacy
+Media files are selected locally and played through temporary browser object URLs. They are not uploaded. The browser session owns the active file queue; closing/reloading the page requires reselecting the media files. Station/catalog metadata is stored in this browser's local storage and can be exported as JSON. Exported metadata does not contain the media itself.
+
+Browser codec support varies. MP3, AAC/M4A, WAV, OGG, MP4 (H.264/AAC) and WebM are common safe choices. FLAC, MOV and other formats vary by browser/device.
+
+## Suno workflow
+1. Download a Suno generation as an audio file.
+2. Import it into the library.
+3. Edit its title, artist/persona and tags.
+4. Create stations such as Night Drive, Instrumentals, Game Scores, Ambient, or Favorites.
+5. Add the track to one or more stations and export your library metadata for backup.
+
+Suno share links are catalog references only; this app does not scrape or stream audio from Suno URLs.
