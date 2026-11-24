@@ -53,10 +53,15 @@ export async function proxyAI(context, endpoint) {
       headers,
       body: endpoint === "models" ? undefined : JSON.stringify(body)
     });
-    const responseHeaders = new Headers(upstream.headers);
-    responseHeaders.set("Cache-Control", "no-store");
-    responseHeaders.set("X-Content-Type-Options", "nosniff");
-    responseHeaders.delete("Access-Control-Allow-Origin");
+    const responseHeaders = new Headers({
+      "Content-Type": upstream.headers.get("Content-Type") || "application/json; charset=utf-8",
+      "Cache-Control": "no-store",
+      "X-Content-Type-Options": "nosniff"
+    });
+    for (const name of ["retry-after", "x-request-id"]) {
+      const value = upstream.headers.get(name);
+      if (value) responseHeaders.set(name, value);
+    }
     return new Response(upstream.body, { status: upstream.status, statusText: upstream.statusText, headers: responseHeaders });
   } catch {
     return reply("Provider request failed at the gateway.", 502);
