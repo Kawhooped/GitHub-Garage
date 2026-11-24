@@ -97,4 +97,13 @@ A public, searchable directory of free AI chat services, open models, API provid
 
 `apps/void-ai-access/workspace.html` provides a browser-based multi-provider chat interface. It supports OpenRouter (including the `openrouter/free` model router), Groq, Cerebras, and custom OpenAI-compatible endpoints. It loads model lists where supported, streams chat completions, allows provider switching, and keeps chat history locally in the browser when enabled.
 
-**Credential model:** API keys remain in JavaScript memory for the current page session and are not written to localStorage, cookies, or repository files. Requests are sent directly from the browser to the selected provider. This is a personal bring-your-own-key interface, not a secure shared proxy; use only your own keys and avoid shared/public devices. Provider CORS policy may prevent direct browser requests. A server-side proxy is required for a production multi-user service or server-held credentials. The workspace has not been live-tested against provider APIs because that requires a user's own API key.
+**Credential model:** API keys remain in JavaScript memory for the current page session and are not written to localStorage, cookies, or repository files. Requests are sent directly from the browser to the selected provider. This is a personal bring-your-own-key interface, not a secure shared proxy; use only your own keys and avoid shared/public devices. Provider CORS policy may prevent direct browser requests. A server-side proxy is required for a production multi-user service or server-held credentials. A Cloudflare Pages Functions proxy is included under `functions/` for OpenRouter, Groq and Cerebras.
+
+#### Secure Cloudflare Pages setup
+
+1. Deploy this repository to Cloudflare Pages with production branch `dd-main`, no build command, and build output directory `/`. Pages Functions are detected from the root `functions/` directory.
+2. In the Pages project settings, add these as **encrypted secrets** (not public variables): `VOID_AI_GATEWAY_TOKEN`, `OPENROUTER_API_KEY`, `GROQ_API_KEY`, and/or `CEREBRAS_API_KEY`. Set only the providers you intend to use.
+3. Open VOID AI Workspace, choose a provider, enable **Use secure Cloudflare Pages gateway**, and enter the value of `VOID_AI_GATEWAY_TOKEN`. The provider keys never enter the browser.
+4. Keep the gateway token private. For broader/public use, add Cloudflare Access or a Cloudflare rate-limiting rule to protect the gateway; the token is a shared access credential, not user authentication.
+
+The secure gateway is available only when the site is deployed on Cloudflare Pages with Functions enabled; GitHub Pages cannot run these server-side routes. Direct browser mode remains available for providers that permit browser requests, but some providers may block it with CORS. The workspace has not been live-tested against provider APIs because that requires configured provider secrets or a user's own API key.
