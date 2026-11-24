@@ -33,7 +33,7 @@
 </main></div>
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="panel">
 <div class="panelhead"><h2 id="modalTitle">Connect a provider</h2><button class="x" id="close">Close</button></div>
-<div class="security"><b>Key safety:</b> Your API key is kept only in this page's memory and is not written to localStorage, cookies, or this repository. Requests go directly from your browser to the provider. Use your own key; never enter a shared or work key on a public device. This is a browser-side BYOK workspace, not a private server proxy.</div>
+<div class="security"><b>Key safety:</b> Direct mode keeps your provider key in page memory only and sends requests straight to that provider. Secure Cloudflare mode sends only your gateway token from the browser; provider API keys stay in Cloudflare Pages secrets. Neither mode writes credentials to localStorage, cookies, or this repository. Do not use direct mode on shared or public devices.</div>
 <div class="field"><label for="providerSelect">Provider</label><select id="providerSelect">
 <option value="openrouter">OpenRouter · free models available</option><option value="groq">Groq · developer free tier</option><option value="cerebras">Cerebras · developer access</option><option value="custom">Custom OpenAI-compatible API</option>
 </select></div>
