@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f2f1e9">
+<meta name="description" content="VOID AI Access — a curated gateway to free AI websites, open models, APIs and self-hosted tools.">
+<title>VOID AI Access · GitHub Garage</title>
+<style>
+:root{--bg:#f2f1e9;--paper:#fffefa;--ink:#20251d;--muted:#687064;--line:#d9dbcf;--green:#6f9635;--dark:#20251d;--pale:#e7eadf}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}a{color:inherit}.wrap{max-width:1160px;margin:auto;padding:22px clamp(16px,4vw,48px) 60px}.top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:16px;gap:12px}.brand{display:flex;align-items:center;gap:10px;font-weight:800}.mark{width:36px;height:36px;border-radius:9px;background:var(--dark);color:#d7f69a;display:grid;place-items:center;font-size:19px}.eyebrow{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);font-weight:800}.back{font-size:12px;text-decoration:none;color:var(--muted)}.hero{padding:48px 0 30px;max-width:760px}.hero h1{font-size:clamp(42px,7vw,72px);letter-spacing:-.07em;line-height:.95;margin:12px 0}.hero h1 span{color:var(--green)}.hero p{font-size:15px;color:var(--muted);max-width:650px}.notice{background:var(--pale);border:1px solid var(--line);padding:13px 15px;border-radius:9px;color:#4f5a46;font-size:12px;margin:20px 0}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}.search{flex:1;min-width:220px;border:1px solid var(--line);background:var(--paper);padding:12px;border-radius:7px;font:inherit}.tabs{display:flex;gap:6px;flex-wrap:wrap}.tab{border:1px solid var(--line);background:transparent;border-radius:6px;padding:8px 11px;color:var(--muted);cursor:pointer}.tab.active{background:var(--dark);border-color:var(--dark);color:white}.head{display:flex;justify-content:space-between;align-items:baseline;margin:28px 0 11px}.head h2{font-size:19px;letter-spacing:-.03em;margin:0}.head small{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.card{display:flex;flex-direction:column;min-height:180px;background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:16px;text-decoration:none;transition:.15s}.card:hover{transform:translateY(-2px);border-color:#a8bf7c}.meta{display:flex;justify-content:space-between;color:var(--green);font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.card h3{font-size:17px;margin:15px 0 6px;letter-spacing:-.03em}.card p{font-size:12px;color:var(--muted);margin:0}.foot{margin-top:auto;padding-top:14px;font-size:10px;color:#788071}.empty{padding:24px;color:var(--muted);border:1px dashed var(--line);grid-column:1/-1}.section{margin-top:42px;border-top:1px solid var(--line);padding-top:18px}.section p{color:var(--muted);font-size:13px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.step{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:15px}.step b{display:block;margin-bottom:5px}.step span{font-size:12px;color:var(--muted)}.footer{border-top:1px solid var(--line);margin-top:44px;padding-top:15px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:1fr}}@media(max-width:500px){.grid{grid-template-columns:1fr}.hero{padding-top:34px}}
+</style>
+</head>
+<body><main class="wrap">
+<header class="top"><div class="brand"><span class="mark">◎</span><span>VOID AI ACCESS</span></div><a class="back" href="../">← GitHub Garage</a></header>
+<section class="hero"><div class="eyebrow">THE OPEN AI GATEWAY · GARAGE PROJECT</div><h1>More models.<br><span>Less overhead.</span></h1><p>A practical launchpad for free AI chat, open models, low-cost APIs and software you can host yourself. Choose a route and open the provider directly.</p></section>
+<div class="notice"><b>Cost clarity:</b> This directory is free to use. Provider free tiers, quotas and prices can change. Opening a provider does not create an account or guarantee free inference. Never put API keys into this public website.</div>
+<div class="toolbar"><input id="search" class="search" type="search" placeholder="Search providers, models, tools…" aria-label="Search AI resources"><div class="tabs" id="tabs"></div></div>
+<div class="head"><h2>AI access directory</h2><small id="count" aria-live="polite"></small></div>
+<div class="grid" id="grid"></div>
+<section class="section"><div class="eyebrow">BUILD YOUR OWN STACK</div><div class="head"><h2>Self-hosted AI</h2><small>Open-source software</small></div><div class="steps">
+<div class="step"><b>1 · Interface</b><span>Deploy Open WebUI or LibreChat as your private multi-provider workspace.</span></div>
+<div class="step"><b>2 · Models</b><span>Connect local models through Ollama, or remote models through provider APIs.</span></div>
+<div class="step"><b>3 · Hosting</b><span>Use a machine or server with enough memory and compute. Static GitHub Pages alone cannot run model inference.</span></div>
+</div></section>
+<section class="section"><div class="eyebrow">SAFE CONFIGURATION</div><h2>How to connect APIs</h2><p>For a real unified chat, deploy a backend or serverless function and store provider keys as server-side environment secrets. The browser should call your backend, never expose secret keys. Start with provider free tiers, monitor quotas, and set spending limits where available.</p>
+<p><a href="https://github.com/open-webui/open-webui">Open WebUI ↗</a> · <a href="https://github.com/LibreChat-AI/LibreChat">LibreChat ↗</a> · <a href="https://github.com/ollama/ollama">Ollama ↗</a></p></section>
+<footer class="footer"><span>VOID AI ACCESS · A GitHub Garage project</span><span>Directory links only · No provider affiliation</span></footer>
+</main>
+<script>
+const resources=[
+{n:"Gemini",c:"Free AI chat",d:"Google's consumer AI assistant. Check current free access and regional availability.",u:"https://gemini.google.com/",t:"Chat"},
+{n:"Claude",c:"Free AI chat",d:"Anthropic's assistant with a free usage tier and paid upgrades.",u:"https://claude.ai/",t:"Chat"},
+{n:"DeepSeek",c:"Free AI chat",d:"Chat with DeepSeek models on the official website.",u:"https://chat.deepseek.com/",t:"Chat"},
+{n:"Mistral Le Chat",c:"Free AI chat",d:"Mistral's consumer assistant and model ecosystem.",u:"https://chat.mistral.ai/",t:"Chat"},
+{n:"Microsoft Copilot",c:"Free AI chat",d:"Microsoft's general-purpose AI assistant.",u:"https://copilot.microsoft.com/",t:"Chat"},
+{n:"Perplexity",c:"Research",d:"Web-grounded answer engine with a free tier and optional paid plan.",u:"https://www.perplexity.ai/",t:"Research"},
+{n:"HuggingChat",c:"Open models",d:"Try open models through Hugging Face's chat experience.",u:"https://huggingface.co/chat/",t:"Open models"},
+{n:"OpenRouter",c:"API gateway",d:"One API for models from many providers. Check model-specific pricing and free availability.",u:"https://openrouter.ai/",t:"API"},
+{n:"Google AI Studio",c:"API access",d:"Prototype with Gemini models and inspect current API free-tier limits.",u:"https://aistudio.google.com/",t:"API"},
+{n:"Groq",c:"API access",d:"Fast inference API with published developer limits and pricing.",u:"https://console.groq.com/",t:"API"},
+{n:"Cerebras",c:"API access",d:"Developer inference platform; review current free developer access and limits.",u:"https://cloud.cerebras.ai/",t:"API"},
+{n:"Ollama",c:"Self-hosted",d:"Run supported open models on your own computer or server.",u:"https://ollama.com/",t:"Self-host"},
+{n:"Open WebUI",c:"Self-hosted",d:"Open-source interface for local and remote model providers.",u:"https://github.com/open-webui/open-webui",t:"Self-host"},
+{n:"LibreChat",c:"Self-hosted",d:"Open-source multi-provider AI chat application.",u:"https://github.com/LibreChat-AI/LibreChat",t:"Self-host"},
+{n:"LM Studio",c:"Self-hosted",d:"Desktop application for discovering and running local models.",u:"https://lmstudio.ai/",t:"Self-host"},
+{n:"Hugging Face Models",c:"Open models",d:"Explore model cards, licenses, downloads and inference options.",u:"https://huggingface.co/models",t:"Open models"},
+{n:"Poe",c:"Multi-model",d:"One consumer interface for a range of bots and models; free usage is limited.",u:"https://poe.com/",t:"Multi-model"}
+];
+const categories=["All",...new Set(resources.map(x=>x.t))];let active="All";
+const $=s=>document.querySelector(s);
+function render(){const q=$("#search").value.toLowerCase().trim();const items=resources.filter(x=>(active==="All"||x.t===active)&&[x.n,x.c,x.d,x.t].join(" ").toLowerCase().includes(q));$("#count").textContent=items.length+" of "+resources.length+" resources";$("#grid").innerHTML=items.length?items.map(x=>'<a class="card" href="'+x.u+'" target="_blank" rel="noopener noreferrer"><div class="meta"><span>'+x.t+'</span><span>OPEN ↗</span></div><h3>'+x.n+'</h3><p>'+x.d+'</p><div class="foot">'+x.c+'</div></a>').join(""):'<div class="empty">No matching resources.</div>'}
+$("#tabs").innerHTML=categories.map(x=>'<button class="tab '+(x==="All"?"active":"")+'" type="button" data-tab="'+x+'">'+x+'</button>').join("");
+$("#tabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(!b)return;active=b.dataset.tab;document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===b));render()});
+$("#search").addEventListener("input",render);render();
+</script></body></html>
