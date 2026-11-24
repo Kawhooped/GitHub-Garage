@@ -107,3 +107,9 @@ A public, searchable directory of free AI chat services, open models, API provid
 4. Keep the gateway token private. For broader/public use, add Cloudflare Access or a Cloudflare rate-limiting rule to protect the gateway; the token is a shared access credential, not user authentication.
 
 The secure gateway is available only when the site is deployed on Cloudflare Pages with Functions enabled; GitHub Pages cannot run these server-side routes. Direct browser mode remains available for providers that permit browser requests, but some providers may block it with CORS. The workspace has not been live-tested against provider APIs because that requires configured provider secrets or a user's own API key.
+
+## VOID AI + Workshop
+
+Open `apps/void-ai-workshop/` for the connected VOID AI and Workshop environment. It combines a multi-provider AI chat with a browser-local agent workshop, experiment lab, knowledge notes, and AI-callable Workshop tools. The model can create agents, save experiments and notes, inspect Workshop collections, and update experiment records through tool calling.
+
+**Current boundaries:** provider keys remain in page memory for the session and are sent directly to the selected provider. Workshop records and chat history are stored in the current browser's local storage; they are not synced across devices or users. This is an initial connected environment, not yet a server-backed shared memory or autonomous deployment system. Tool-calling support depends on the selected model/provider.
