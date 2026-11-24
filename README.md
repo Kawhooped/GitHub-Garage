@@ -91,3 +91,10 @@ Built to keep building. 🔧
 ## VOID AI Access
 
 A public, searchable directory of free AI chat services, open models, API providers, and self-hosted AI software. Open `apps/void-ai-access/` or visit it from the main navigation. The directory links to providers; it does not proxy model requests or store API credentials. Provider prices and free-tier limits can change, so verify current terms with each provider. Static hosting does not perform model inference.
+
+
+### VOID AI Workspace
+
+`apps/void-ai-access/workspace.html` provides a browser-based multi-provider chat interface. It supports OpenRouter (including the `openrouter/free` model router), Groq, Cerebras, and custom OpenAI-compatible endpoints. It loads model lists where supported, streams chat completions, allows provider switching, and keeps chat history locally in the browser when enabled.
+
+**Credential model:** API keys remain in JavaScript memory for the current page session and are not written to localStorage, cookies, or repository files. Requests are sent directly from the browser to the selected provider. This is a personal bring-your-own-key interface, not a secure shared proxy; use only your own keys and avoid shared/public devices. Provider CORS policy may prevent direct browser requests. A server-side proxy is required for a production multi-user service or server-held credentials. The workspace has not been live-tested against provider APIs because that requires a user's own API key.
