@@ -1,0 +1,122 @@
+openapi: 3.1.1
+info:
+  title: VOID AI Control Surface
+  version: 1.0.0
+  description: >
+    Machine-readable description of the actions exposed by this website.
+    The current implementation executes them through WebMCP in the open browser tab;
+    this document is a capability contract, not a remotely hosted REST API.
+servers:
+  - url: https://example.invalid
+    description: Placeholder only. Replace when a server-side API is deployed.
+paths:
+  /site:
+    get:
+      operationId: get_site_state
+      summary: Read current website state
+      responses:
+        '200':
+          description: Current site state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteState'
+  /site/mode:
+    put:
+      operationId: set_site_mode
+      summary: Set site mode
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [mode]
+              properties:
+                mode:
+                  type: string
+                  enum: [online, paused]
+      responses:
+        '200':
+          description: Updated state
+  /site/content:
+    patch:
+      operationId: update_site_content
+      summary: Update visible site content
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                headline:
+                  type: string
+                  maxLength: 90
+                message:
+                  type: string
+                  maxLength: 500
+      responses:
+        '200':
+          description: Updated state
+  /tasks:
+    post:
+      operationId: add_task
+      summary: Add a task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [title]
+              properties:
+                title:
+                  type: string
+                  minLength: 1
+                  maxLength: 120
+      responses:
+        '200':
+          description: Task added
+  /tasks/{id}:
+    patch:
+      operationId: complete_task
+      summary: Complete or reopen a task
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                done:
+                  type: boolean
+                  default: true
+      responses:
+        '200':
+          description: Task updated
+components:
+  schemas:
+    SiteState:
+      type: object
+      properties:
+        mode:
+          type: string
+          enum: [online, paused]
+        headline:
+          type: string
+        message:
+          type: string
+        tasks:
+          type: array
+          items:
+            type: object
+            properties:
+              id: {type: string}
+              title: {type: string}
+              done: {type: boolean}
