@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#171b16">
+<title>VOID · Complexity Gate</title>
+<style>
+:root{color-scheme:dark;--bg:#11140f;--panel:#1a1f18;--line:#343d2e;--ink:#edf2e8;--muted:#9ca994;--lime:#c5f279;--amber:#e8c46c;--red:#f18c76}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#29371e 0,transparent 42%),var(--bg);color:var(--ink);font:14px/1.55 system-ui,sans-serif}.wrap{max-width:850px;margin:auto;padding:28px 18px 60px}.brand{font-weight:850;letter-spacing:.05em;border-bottom:1px solid var(--line);padding-bottom:16px}.mark{display:inline-grid;place-items:center;width:34px;height:34px;background:var(--lime);color:#172012;border-radius:9px;margin-right:9px}.hero{padding:42px 0 24px}.eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);font-weight:800}.hero h1{font-size:clamp(36px,7vw,58px);line-height:1;letter-spacing:-.06em;margin:10px 0}.hero p,.muted{color:var(--muted)}.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;margin:12px 0}.label{display:block;color:var(--muted);font-size:11px;font-weight:750;margin-bottom:8px}textarea{width:100%;min-height:135px;resize:vertical;background:#10140f;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:12px;font:14px/1.5 system-ui}button{border:1px solid var(--lime);background:var(--lime);color:#172012;font-weight:800;border-radius:7px;padding:10px 15px;margin-top:12px;cursor:pointer}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.metric{background:#20271d;border:1px solid var(--line);border-radius:9px;padding:14px}.metric strong{display:block;font-size:30px;letter-spacing:-.04em}.metric small{color:var(--muted)}.bar{height:8px;background:#30382b;border-radius:20px;overflow:hidden;margin:10px 0}.bar i{display:block;height:100%;width:0;background:var(--lime);border-radius:20px}.status{font-weight:850;font-size:17px}.good{color:var(--lime)}.warn{color:var(--amber)}.bad{color:var(--red)}ul{padding-left:19px;color:var(--muted)}li{margin:5px 0}.cap{display:inline-block;border:1px solid var(--lime);color:var(--lime);border-radius:99px;padding:3px 9px;font-size:10px;font-weight:800}.foot{font-size:10px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin-top:25px}@media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main class="wrap">
+<div class="brand"><span class="mark">◎</span>VOID / COMPLEXITY GATE</div>
+<header class="hero"><div class="eyebrow">SCOPE CONTROL</div><h1>Value up.<br>Complexity capped.</h1><p>Describe the task. The gate estimates difficulty and potential value, then flags work that exceeds the allowed complexity.</p></header>
+<section class="panel">
+<label class="label" for="task">WHAT ARE WE TRYING TO DO?</label>
+<textarea id="task" placeholder="Example: Build one public page that lets an AI assistant change its headline and read its current status."></textarea>
+<button id="check">Evaluate task</button>
+</section>
+<section id="result" hidden>
+<div class="grid">
+<div class="metric"><small>COMPLEXITY / 10</small><strong id="complexity">—</strong><div class="bar"><i id="complexityBar"></i></div><div class="status" id="difficulty"></div></div>
+<div class="metric"><small>POTENTIAL VALUE / 10</small><strong id="value">—</strong><div class="bar"><i id="valueBar"></i></div><div class="status" id="valueLabel"></div></div>
+</div>
+<div class="panel"><div class="eyebrow">COMPLEXITY LIMIT</div><p><span class="cap">CAP: 4 / 10</span></p><div class="status" id="decision"></div><p class="muted" id="reason"></p></div>
+<div class="panel"><div class="eyebrow">WHAT IS DRIVING THE SCORE?</div><ul id="signals"></ul></div>
+<div class="panel"><div class="eyebrow">SIMPLIFIED SCOPE</div><p id="simplify"></p></div>
+</section>
+<footer class="foot">Heuristic estimate, not an objective measurement. Scores are explainable signals from the task description. The complexity cap is fixed at 4/10.</footer>
+</main>
+<script>
+(()=>{
+const $=s=>document.querySelector(s);
+const patterns=[
+["Multiple actions",/\b(and then|also|plus|additionally|as well as|multiple|several)\b/gi,1],
+["External integrations",/\b(api|integration|connect to|third[- ]party|webhook|mcp|oauth|provider)\b/gi,2],
+["Accounts or permissions",/\b(login|authentication|authorization|permission|account|multi[- ]user|role)\b/gi,2],
+["Persistent or shared data",/\b(database|cloud storage|sync|shared state|persistent|real[- ]time|across devices)\b/gi,2],
+["Deployment or infrastructure",/\b(deploy|hosting|server|backend|domain|dns|infrastructure|production)\b/gi,1],
+["Automation or agent behavior",/\b(automatically|autonomous|agent|orchestrat|workflow|background|schedule)\b/gi,1],
+["Broad or vague scope",/\b(everything|universal|all websites|complete platform|fully|entire|any website|zero steps)\b/gi,2],
+["Security-sensitive actions",/\b(payment|delete|financial|private|sensitive|secret|credential|irreversible)\b/gi,2]
+];
+const valuePatterns=[
+["Clear outcome",/\b(so that|in order to|lets? me|enables?|allow|help|result|outcome)\b/gi,2],
+["Reuse or leverage",/\b(reusable|reus(e|able)|template|many projects|multiple sites|network|shared)\b/gi,2],
+["Time or effort saved",/\b(save time|faster|reduce work|automate|manual work|effort)\b/gi,2],
+["Traffic or revenue",/\b(traffic|visitor|customer|revenue|sales|income|publish|public)\b/gi,2],
+["Measurable result",/\b(measure|track|count|verify|test|metric|monitor)\b/gi,2]
+];
+function count(re,text){return (text.match(re)||[]).length}
+function evaluate(raw){
+ const text=raw.toLowerCase();let complexity=1,signals=[];
+ for(const [name,re,weight] of patterns){const n=count(re,text);if(n){const points=Math.min(weight,n*weight);complexity+=points;signals.push(name+" (+"+points+")")}}
+ const words=text.split(/\s+/).filter(Boolean).length;
+ if(words>45){complexity+=1;signals.push("Long task description (+1)")}
+ if(words>90){complexity+=1;signals.push("Very broad description (+1)")}
+ complexity=Math.min(10,complexity);
+ let value=1,valueSignals=[];
+ for(const [name,re,weight] of valuePatterns){if(re.test(text)){value+=weight;valueSignals.push(name);re.lastIndex=0}}
+ value=Math.min(10,value);
+ const difficulty=complexity<=2?"Easy":complexity<=4?"Manageable":complexity<=6?"Difficult":complexity<=8?"Very difficult":"Extreme";
+ const vlabel=value>=8?"High potential":value>=5?"Useful potential":"Unclear / limited";
+ return {complexity,value,difficulty,vlabel,signals,valueSignals};
+}
+function run(){
+ const raw=$("#task").value.trim();if(!raw){$("#task").focus();return}
+ const r=evaluate(raw);$("#result").hidden=false;
+ $("#complexity").textContent=r.complexity+"/10";$("#value").textContent=r.value+"/10";
+ $("#complexityBar").style.width=(r.complexity*10)+"%";$("#valueBar").style.width=(r.value*10)+"%";
+ $("#difficulty").textContent=r.difficulty;$("#valueLabel").textContent=r.vlabel;
+ const over=r.complexity>4;
+ $("#decision").textContent=over?"OVER CAP — SIMPLIFY BEFORE BUILDING":"WITHIN CAP — PROCEED";
+ $("#decision").className="status "+(over?"bad":"good");
+ $("#reason").textContent=over?"This task exceeds the complexity budget by "+(r.complexity-4)+" point(s). Keep the main outcome; defer optional systems and integrations.":"The task fits the complexity budget. Keep the implementation focused.";
+ const all=[...r.signals,...r.valueSignals.map(x=>"Value signal: "+x)];
+ $("#signals").replaceChildren(...(all.length?all:["No strong complexity or value signals detected."]).map(x=>{const li=document.createElement("li");li.textContent=x;return li}));
+ $("#simplify").textContent=over?"Build only the single user-visible outcome. Remove integrations, accounts, shared storage, background automation and extra features unless one is essential to that outcome. Re-evaluate after narrowing the scope.":"Keep the current scope. Do not add features that do not increase the stated outcome.";
+}
+$("#check").addEventListener("click",run);
+$("#task").addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key==="Enter")run()});
+})();
+</script></body></html>
