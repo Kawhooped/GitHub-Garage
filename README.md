@@ -86,3 +86,8 @@ The separate [workshop-gateway](https://github.com/Kawhooped/workshop-gateway) r
 https://github.com/Kawhooped/GitHub-Garage
 
 Built to keep building. 🔧
+
+
+## VOID AI Access
+
+A public, searchable directory of free AI chat services, open models, API providers, and self-hosted AI software. Open `apps/void-ai-access/` or visit it from the main navigation. The directory links to providers; it does not proxy model requests or store API credentials. Provider prices and free-tier limits can change, so verify current terms with each provider. Static hosting does not perform model inference.
