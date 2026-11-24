@@ -63,7 +63,7 @@ Cloudflare Pages serves `index.html` from the repository root. Pushes to `dd-mai
 7. **Secure AI collaborator gateway and Project Factory** — authorized AI-assisted repository work; pending.
 8. **Knowledge Library, Activity, and Launch Bay** — searchable shared knowledge, verified activity, deployment and publishing workflows; pending.
 
-Only items explicitly marked implemented are currently available. No model calls or private repository contents are exposed by the public site.
+Only items explicitly marked implemented are currently available. The public Garage UI can call provider APIs only after an explicit user connection; API credentials are not committed. Private repository contents are not exposed by the public site.
 
 ## Security boundaries
 
