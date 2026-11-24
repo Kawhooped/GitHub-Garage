@@ -1,0 +1,29 @@
+{
+  "name": "VOID AI Control Surface",
+  "version": "1.0.0",
+  "description": "A website that exposes page actions as structured WebMCP tools for compatible browser-based AI agents.",
+  "website": "./",
+  "protocols": {
+    "webmcp": {
+      "api": "document.modelContext.registerTool",
+      "tools": [
+        "get_site_state",
+        "set_site_mode",
+        "update_site_content",
+        "add_task",
+        "complete_task"
+      ],
+      "requires": "A browser and AI agent that support WebMCP"
+    }
+  },
+  "state": {
+    "storage": "browser-local localStorage",
+    "shared": false,
+    "credentials_required": false
+  },
+  "permissions": {
+    "read": ["site_state", "task_board"],
+    "write": ["site_mode", "site_content", "task_board"],
+    "delete": []
+  }
+}
