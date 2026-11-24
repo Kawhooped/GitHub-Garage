@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#171b16">
+<meta name="description" content="A website with a native AI control surface. Let compatible browser agents inspect and operate it through structured tools.">
+<title>VOID · AI Control Surface</title>
+<style>
+:root{color-scheme:dark;--bg:#11140f;--panel:#1a1f18;--panel2:#20271d;--line:#343d2e;--ink:#edf2e8;--muted:#9ca994;--lime:#c5f279;--green:#87b64b;--red:#f18c76}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#29371e 0,transparent 42%),var(--bg);color:var(--ink);font:14px/1.55 Inter,system-ui,sans-serif}.shell{max-width:1050px;margin:auto;padding:25px clamp(16px,4vw,42px) 60px}.top{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid var(--line);padding-bottom:18px}.brand{display:flex;gap:10px;align-items:center;font-weight:850;letter-spacing:.04em}.mark{width:36px;height:36px;border-radius:10px;background:var(--lime);color:#172012;display:grid;place-items:center;font-size:20px}.eyebrow{font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--lime);font-weight:800}.pill{border:1px solid var(--line);border-radius:99px;padding:6px 10px;color:var(--muted);font-size:10px}.hero{padding:54px 0 32px;max-width:740px}.hero h1{font-size:clamp(42px,8vw,76px);letter-spacing:-.075em;line-height:.94;margin:12px 0}.hero h1 span{color:var(--lime)}.hero p{max-width:610px;color:var(--muted);font-size:15px}.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:13px}.card{background:linear-gradient(145deg,#1c2319,#171b16);border:1px solid var(--line);border-radius:13px;padding:19px;min-width:0}.card h2{font-size:15px;margin:0 0 15px;letter-spacing:-.02em}.state{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:13px;background:var(--panel2);border-radius:9px}.state strong{display:block;font-size:17px}.state small,.muted{color:var(--muted);font-size:11px}.led{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 14px #87b64b88;display:inline-block;margin-right:7px}.led.paused{background:var(--red);box-shadow:0 0 14px #f18c7688}.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.btn{border:1px solid var(--line);background:#252e20;color:var(--ink);border-radius:7px;padding:9px 12px;font-size:11px;font-weight:750}.btn:hover{border-color:var(--lime)}.btn.primary{background:var(--lime);border-color:var(--lime);color:#172012}.btn:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--lime);outline-offset:2px}.field{display:grid;gap:6px;margin-top:12px}.field label{font-size:10px;color:var(--muted);font-weight:750}.field input,.field textarea{width:100%;background:#10140f;border:1px solid var(--line);border-radius:7px;padding:10px;color:var(--ink);font:inherit}.field textarea{min-height:76px;resize:vertical}.message{font-size:17px;line-height:1.4;overflow-wrap:anywhere}.tasklist{display:grid;gap:7px;margin-top:10px}.task{display:flex;align-items:center;gap:9px;padding:9px;background:var(--panel2);border-radius:7px}.task span{flex:1;overflow-wrap:anywhere}.task.done span{text-decoration:line-through;color:var(--muted)}.task button{border:1px solid var(--line);background:transparent;color:var(--lime);border-radius:6px;padding:5px 8px;font-size:10px}.empty{padding:15px;border:1px dashed var(--line);border-radius:8px;color:var(--muted);font-size:11px}.wide{grid-column:1/-1}.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.tool{border:1px solid var(--line);border-radius:8px;padding:10px;background:#151a13}.tool b{display:block;font-size:11px;color:var(--lime)}.tool span{font-size:10px;color:var(--muted)}.statusline{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:11px}.statusline.good{color:var(--lime)}.statusline.bad{color:var(--red)}.foot{border-top:1px solid var(--line);margin-top:30px;padding-top:15px;color:var(--muted);font-size:10px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--lime);color:#172012;padding:9px 14px;border-radius:7px;font-size:11px;font-weight:800;display:none}.toast.show{display:block}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.wide{grid-column:auto}.hero{padding-top:38px}.tools{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main class="shell">
+<header class="top"><div class="brand"><span class="mark">◎</span><span>VOID / AI CONTROL SURFACE</span></div><span class="pill">WEB-CONTROLLABLE SITE · v1</span></header>
+<section class="hero"><div class="eyebrow">A WEBSITE THAT SPEAKS TO AI</div><h1>Not just a page.<br><span>An interface.</span></h1><p>This site exposes its real actions as structured tools. A compatible AI browser agent can discover what is available and operate the site directly—without guessing buttons or scraping the screen.</p><div class="statusline" id="agentStatus"><span class="led paused"></span><span>Checking browser tool support…</span></div></section>
+<div class="grid">
+<section class="card"><h2>01 / Site controls</h2><div class="state"><div><small>SITE MODE</small><strong id="modeLabel">ONLINE</strong></div><span id="modeLed" class="led"></span></div><div class="controls"><button class="btn primary" id="onlineBtn">Set online</button><button class="btn" id="pauseBtn">Pause site</button></div><div class="field"><label for="headlineInput">SITE HEADLINE</label><input id="headlineInput" maxlength="90" value="A small website, ready for AI."></div><div class="field"><label for="messageInput">PUBLIC MESSAGE</label><textarea id="messageInput" maxlength="500">This website can be operated by a compatible AI agent through structured tools.</textarea></div><div class="controls"><button class="btn primary" id="saveBtn">Save changes</button></div></section>
+<section class="card"><h2>02 / Live site state</h2><div class="eyebrow">CURRENT HEADLINE</div><p class="message" id="headlineView">A small website, ready for AI.</p><div class="eyebrow" style="margin-top:20px">PUBLIC MESSAGE</div><p class="muted" id="messageView">This website can be operated by a compatible AI agent through structured tools.</p><div class="eyebrow" style="margin-top:22px">LAST UPDATED</div><p class="muted" id="updatedView">Just now</p></section>
+<section class="card"><h2>03 / Task board</h2><div class="field"><label for="taskInput">ADD A TASK</label><input id="taskInput" maxlength="120" placeholder="e.g. Publish the next experiment"></div><div class="controls"><button class="btn primary" id="addTaskBtn">Add task</button></div><div class="tasklist" id="taskList"></div></section>
+<section class="card"><h2>04 / AI connection</h2><p class="muted">The page registers these actions through the WebMCP browser interface when the browser supports it. Tool availability depends on the AI assistant and browser—not every chat assistant can invoke page tools from a pasted URL alone.</p><div class="statusline" id="toolCount"><span class="led paused"></span><span>Tools not yet registered</span></div><div class="controls"><button class="btn" id="refreshTools">Refresh tool status</button><a class="btn" href="./openapi.yaml" style="text-decoration:none">Open API description ↗</a><a class="btn" href="./ai-control.json" style="text-decoration:none">AI manifest ↗</a></div><p class="muted" style="margin-top:14px">For this demo, state is stored in this browser. It is not a shared cloud database. The AI tools operate the same page and browser profile that opened this link.</p></section>
+<section class="card wide"><h2>05 / Tools exposed to compatible AI agents</h2><div class="tools" id="toolsList">
+<div class="tool"><b>get_site_state</b><span>Read current site mode, headline, message and tasks.</span></div>
+<div class="tool"><b>set_site_mode</b><span>Set the site to online or paused.</span></div>
+<div class="tool"><b>update_site_content</b><span>Change the headline and public message.</span></div>
+<div class="tool"><b>add_task</b><span>Add an item to the task board.</span></div>
+<div class="tool"><b>complete_task</b><span>Mark a task complete or reopen it.</span></div>
+</div></section>
+</div>
+<footer class="foot"><span>VOID · AI CONTROL SURFACE</span><span>WebMCP + browser-local state · no credentials requested</span></footer>
+</main><div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(()=> {
+const KEY="void-ai-control-surface-v1";
+const defaults={mode:"online",headline:"A small website, ready for AI.",message:"This website can be operated by a compatible AI agent through structured tools.",tasks:[],updatedAt:new Date().toISOString()};
+let state=load();
+const $=s=>document.querySelector(s);
+function load(){try{const x=JSON.parse(localStorage.getItem(KEY)||"null");return x&&typeof x==="object"?{...defaults,...x}:structuredClone(defaults)}catch{return structuredClone(defaults)}}
+function save(){state.updatedAt=new Date().toISOString();localStorage.setItem(KEY,JSON.stringify(state));render()}
+function safeText(v,max){return typeof v==="string"?v.trim().slice(0,max):""}
+function render(){
+ $("#modeLabel").textContent=state.mode.toUpperCase();
+ $("#modeLed").classList.toggle("paused",state.mode!=="online");
+ $("#headlineView").textContent=state.headline;
+ $("#messageView").textContent=state.message;
+ $("#updatedView").textContent=new Date(state.updatedAt).toLocaleString();
+ $("#headlineInput").value=state.headline;
+ $("#messageInput").value=state.message;
+ const list=$("#taskList");list.replaceChildren();
+ if(!state.tasks.length){const e=document.createElement("div");e.className="empty";e.textContent="No tasks yet. Ask an AI agent to add one.";list.append(e)}
+ state.tasks.forEach(task=>{const row=document.createElement("div");row.className="task"+(task.done?" done":"");const label=document.createElement("span");label.textContent=task.title;const b=document.createElement("button");b.textContent=task.done?"Reopen":"Complete";b.addEventListener("click",()=>completeTask(task.id,!task.done));row.append(label,b);list.append(row)});
+}
+function toast(s){const t=$("#toast");t.textContent=s;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)}
+function getSiteState(){return {ok:true,site:"VOID AI Control Surface",...structuredClone(state)}}
+function setSiteMode(mode){if(!["online","paused"].includes(mode))return {ok:false,error:"mode must be online or paused"};state.mode=mode;save();return getSiteState()}
+function updateSiteContent(headline,message){if(headline!==undefined){const v=safeText(headline,90);if(!v)return {ok:false,error:"headline cannot be empty"};state.headline=v}if(message!==undefined)state.message=safeText(message,500);save();return getSiteState()}
+function addTask(title){const v=safeText(title,120);if(!v)return {ok:false,error:"task title is required"};const task={id:crypto.randomUUID(),title:v,done:false,createdAt:new Date().toISOString()};state.tasks.push(task);save();return {ok:true,task,state:getSiteState()}}
+function completeTask(id,done=true){const task=state.tasks.find(x=>x.id===id);if(!task)return {ok:false,error:"task not found",availableTaskIds:state.tasks.map(x=>x.id)};task.done=Boolean(done);task.completedAt=task.done?new Date().toISOString():null;save();return {ok:true,task,state:getSiteState()}}
+$("#onlineBtn").addEventListener("click",()=>{setSiteMode("online");toast("Site set online")});
+$("#pauseBtn").addEventListener("click",()=>{setSiteMode("paused");toast("Site paused")});
+$("#saveBtn").addEventListener("click",()=>{const r=updateSiteContent($("#headlineInput").value,$("#messageInput").value);toast(r.ok===false?r.error:"Changes saved")});
+$("#addTaskBtn").addEventListener("click",()=>{const r=addTask($("#taskInput").value);if(r.ok){$("#taskInput").value="";toast("Task added")}else toast(r.error)});
+$("#taskInput").addEventListener("keydown",e=>{if(e.key==="Enter")$("#addTaskBtn").click()});
+render();
+const definitions=[
+{name:"get_site_state",description:"Read the current state of this website, including its mode, visible content and task board.",inputSchema:{type:"object",properties:{}},annotations:{readOnlyHint:true},execute:()=>getSiteState()},
+{name:"set_site_mode",description:"Set this website's displayed operating mode to online or paused.",inputSchema:{type:"object",properties:{mode:{type:"string",enum:["online","paused"]}},required:["mode"]},annotations:{readOnlyHint:false,destructiveHint:false},execute:({mode})=>setSiteMode(mode)},
+{name:"update_site_content",description:"Update the headline and/or public message shown on this website.",inputSchema:{type:"object",properties:{headline:{type:"string",maxLength:90},message:{type:"string",maxLength:500}}},annotations:{readOnlyHint:false,destructiveHint:false},execute:({headline,message})=>updateSiteContent(headline,message)},
+{name:"add_task",description:"Add a new item to this website's task board.",inputSchema:{type:"object",properties:{title:{type:"string",minLength:1,maxLength:120}},required:["title"]},annotations:{readOnlyHint:false,destructiveHint:false},execute:({title})=>addTask(title)},
+{name:"complete_task",description:"Mark an existing task complete or reopen it. First read the task IDs using get_site_state.",inputSchema:{type:"object",properties:{id:{type:"string"},done:{type:"boolean",default:true}},required:["id"]},annotations:{readOnlyHint:false,destructiveHint:false},execute:({id,done=true})=>completeTask(id,done)}
+];
+let registered=0;
+async function registerTools(){
+ const context=document.modelContext||navigator.modelContext;
+ if(!context||typeof context.registerTool!=="function"){
+  $("#agentStatus").className="statusline bad";$("#agentStatus").innerHTML='<span class="led paused"></span><span>WebMCP is not available in this browser. The website still works normally.</span>';
+  $("#toolCount").innerHTML='<span class="led paused"></span><span>0 native browser tools · use a WebMCP-compatible browser agent</span>';return;
+ }
+ try{
+  for(const tool of definitions){await context.registerTool(tool);registered++}
+  $("#agentStatus").className="statusline good";$("#agentStatus").innerHTML='<span class="led"></span><span>WebMCP active · this page exposes '+registered+' callable tools</span>';
+  $("#toolCount").innerHTML='<span class="led"></span><span>'+registered+' tools registered in this browser tab</span>';
+ }catch(e){
+  $("#agentStatus").className="statusline bad";$("#agentStatus").innerHTML='<span class="led paused"></span><span>WebMCP detected, but registration failed: '+String(e.message||e).replace(/[<>]/g,"")+'</span>';
+  $("#toolCount").innerHTML='<span class="led paused"></span><span>'+registered+' of '+definitions.length+' tools registered</span>';
+ }
+}
+$("#refreshTools").addEventListener("click",async()=>{const c=document.modelContext||navigator.modelContext;if(c&&c.getTools){try{const ts=await c.getTools();toast(ts.length+" browser tools visible")}catch{toast("Could not inspect browser tools")}}else toast("WebMCP is not supported here")});
+registerTools();
+window.VOIDControl={getSiteState,setSiteMode,updateSiteContent,addTask,completeTask};
+})();
+</script></body></html>
