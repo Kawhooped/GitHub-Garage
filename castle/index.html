@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#17202b">
+<meta name="description" content="The Castle — a navigable entrance to the VOID workshop network.">
+<title>The Castle · VOID Network</title>
+<style>
+:root{color-scheme:dark;--night:#101925;--stone:#b9b39e;--stone2:#777d7b;--gold:#e8c985;--glow:#a9d6c4;--ink:#f4f0e5;--muted:#b9c0c1;--line:#52616a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 8%,#34485a 0,#192838 38%,#0c1420 78%);color:var(--ink);font:15px/1.55 Georgia,serif;min-height:100vh}
+a{color:inherit}.wrap{max-width:1120px;margin:auto;padding:22px clamp(16px,4vw,48px) 60px}
+header{display:flex;justify-content:space-between;align-items:center;gap:14px;border-bottom:1px solid #ffffff22;padding-bottom:14px;font-family:system-ui,sans-serif}
+.brand{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}header a{font-size:12px;color:var(--muted);text-decoration:none}header a:hover{color:var(--gold)}
+.intro{text-align:center;padding:38px 0 8px}.eyebrow{font:700 10px/1.4 system-ui,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--glow)}
+h1{font-size:clamp(38px,7vw,72px);font-weight:400;letter-spacing:-.045em;line-height:1;margin:12px 0;color:#fff4dc}
+.intro p{max-width:590px;margin:0 auto;color:var(--muted);font-size:16px}
+.scene{height:clamp(260px,38vw,390px);position:relative;margin:12px auto 24px;max-width:850px;overflow:hidden}
+.moon{position:absolute;right:16%;top:7%;width:76px;height:76px;border-radius:50%;background:#f3e6bd;box-shadow:0 0 35px #f3e6bd88,0 0 100px #f3e6bd33}
+.stars{position:absolute;inset:0;background-image:radial-gradient(2px 2px at 12% 22%,#fff 90%,transparent),radial-gradient(1px 1px at 26% 12%,#fff 90%,transparent),radial-gradient(1px 1px at 42% 30%,#fff 90%,transparent),radial-gradient(2px 2px at 68% 18%,#fff 90%,transparent),radial-gradient(1px 1px at 84% 43%,#fff 90%,transparent),radial-gradient(1px 1px at 8% 56%,#fff 90%,transparent),radial-gradient(1px 1px at 58% 55%,#fff 90%,transparent);opacity:.8}
+.hill{position:absolute;bottom:-24%;left:-10%;width:120%;height:55%;border-radius:50% 50% 0 0;background:linear-gradient(#31444a,#111c27)}
+.castle{position:absolute;bottom:12%;left:50%;transform:translateX(-50%);width:min(650px,94%);height:76%}
+.keep,.wing,.wall{position:absolute;bottom:0;background:linear-gradient(90deg,#59636a,#c4bba3 48%,#697278);border:4px solid #39434d;box-shadow:inset -12px 0 20px #26313c,0 12px 28px #0008}
+.keep{left:38%;width:24%;height:94%}.wing{width:19%;height:70%}.wing.left{left:12%}.wing.right{right:12%}.wall{left:20%;width:60%;height:43%;background:linear-gradient(#a9a28f,#716f70)}
+.roof{position:absolute;left:-12%;top:-24%;width:124%;height:27%;background:linear-gradient(90deg,#263c4a,#53616a,#263c4a);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.cap{position:absolute;top:-27%;left:-10%;width:120%;height:30%;background:linear-gradient(90deg,#293d49,#66737a,#293d49);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.flagpole{position:absolute;left:50%;top:-39%;height:40%;width:3px;background:var(--gold)}.flagpole:after{content:"";position:absolute;top:0;left:3px;width:36px;height:19px;background:#a94c4c;clip-path:polygon(0 0,100% 18%,0 100%)}
+.win{position:absolute;width:13px;height:25px;border-radius:10px 10px 2px 2px;background:#ffe0a0;box-shadow:0 0 17px #ffd98c}
+.door{position:absolute;bottom:0;left:41%;width:18%;height:53%;border:4px solid #3b4147;border-bottom:0;border-radius:50% 50% 0 0;background:#202a33}
+.bridge{position:absolute;bottom:0;left:39%;width:22%;height:13%;background:repeating-linear-gradient(90deg,#8b806b 0 13px,#514e4a 13px 16px);transform:perspective(90px) rotateX(12deg)}
+.scene-label{position:absolute;bottom:2%;width:100%;text-align:center;font:10px system-ui,sans-serif;letter-spacing:.3em;color:#e7d8b9;text-shadow:0 2px 9px #000}
+.section-title{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:30px 0 12px;border-bottom:1px solid #ffffff24;padding-bottom:9px}
+.section-title h2{font-size:22px;font-weight:400;margin:0}.section-title span{font:10px system-ui,sans-serif;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.rooms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.room{display:block;min-height:145px;padding:17px;border:1px solid #ffffff25;border-radius:12px;background:linear-gradient(145deg,#263847cc,#172431dd);text-decoration:none;transition:transform .16s,border-color .16s,background .16s}
+.room:hover,.room:focus-visible{transform:translateY(-3px);border-color:var(--gold);background:#304454}
+.room .symbol{font-size:22px}.room h3{font-size:18px;font-weight:400;margin:9px 0 4px;color:#fff0d2}.room p{font-size:12px;color:var(--muted);margin:0}.room .enter{display:block;margin-top:12px;font:700 9px system-ui,sans-serif;letter-spacing:.16em;color:var(--glow)}
+.note{margin-top:22px;padding:14px 16px;border-left:2px solid var(--gold);background:#ffffff09;color:var(--muted);font-size:13px}
+footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid #ffffff22;margin-top:38px;padding-top:14px;color:#9eabb0;font:11px system-ui,sans-serif}
+@media(max-width:700px){.rooms{grid-template-columns:repeat(2,minmax(0,1fr))}.scene{height:275px}.moon{width:58px;height:58px}}
+@media(max-width:470px){.rooms{grid-template-columns:1fr}.intro{padding-top:30px}.scene{height:235px}.castle{width:110%;transform:translateX(-50%) scale(.88);transform-origin:bottom center}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header><div class="brand">VOID · Connected Workshop</div><a href="../index.html">← Return to GitHub Garage</a></header>
+<section class="intro"><div class="eyebrow">A place to enter, explore and make</div><h1>The Castle</h1><p>A front door into the workshop network. Each room is its own space; the paths between them make the place.</p></section>
+<div class="scene" role="img" aria-label="A stone castle with towers, a moonlit sky and a bridge">
+  <div class="stars"></div><div class="moon"></div><div class="hill"></div>
+  <div class="castle">
+    <div class="wing left"><div class="cap"></div><div class="win" style="left:38%;top:28%"></div></div>
+    <div class="wing right"><div class="cap"></div><div class="win" style="left:38%;top:28%"></div></div>
+    <div class="wall"><div class="door"></div><div class="win" style="left:23%;top:25%"></div><div class="win" style="right:23%;top:25%"></div></div>
+    <div class="keep"><div class="roof"></div><div class="flagpole"></div><div class="win" style="left:43%;top:26%"></div><div class="win" style="left:43%;top:49%"></div></div>
+    <div class="bridge"></div>
+  </div><div class="scene-label">THE CASTLE · MANY ROOMS · ONE NETWORK</div>
+</div>
+<div class="section-title"><h2>Choose a room</h2><span>Connected spaces</span></div>
+<nav class="rooms" aria-label="Castle rooms">
+<a class="room" href="../index.html"><span class="symbol">⌂</span><h3>The Great Hall</h3><p>Return to the main workshop and browse the project collection.</p><span class="enter">ENTER THE GARAGE ↗</span></a>
+<a class="room" href="../network-control.html"><span class="symbol">◎</span><h3>Network Control</h3><p>Open the network control space.</p><span class="enter">OPEN CONTROL ↗</span></a>
+<a class="room" href="../research/"><span class="symbol">⌕</span><h3>Research Observatory</h3><p>Explore research spaces, studies and protocols.</p><span class="enter">ENTER RESEARCH ↗</span></a>
+<a class="room" href="../apps/void-ai-workshop/"><span class="symbol">⚒</span><h3>AI Workshop</h3><p>Enter the AI and agent experimentation environment.</p><span class="enter">ENTER WORKSHOP ↗</span></a>
+<a class="room" href="../apps/void-ai-access/"><span class="symbol">✧</span><h3>AI Access</h3><p>Browse AI services, models and tools.</p><span class="enter">EXPLORE AI ↗</span></a>
+<a class="room" href="../apps/void-ai-access/workspace.html"><span class="symbol">▤</span><h3>AI Workspace</h3><p>Open the multi-provider workspace.</p><span class="enter">OPEN WORKSPACE ↗</span></a>
+</nav>
+<div class="note"><strong>Workshop principle:</strong> the castle is an entrance, not a boundary. New rooms can be added as independent HTML spaces and connected here with ordinary links.</div>
+<footer><span>VOID NETWORK · THE CASTLE</span><a href="https://github.com/Kawhooped/GitHub-Garage" target="_blank" rel="noopener">Source repository ↗</a></footer>
+</main>
+</body>
+</html>
